@@ -1,13 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 import './styles/index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import reducers from './reducers';
+import rootSaga from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+
+const composeEnhancers = (composeWithDevTools && composeWithDevTools({
+  // actionsBlacklist: [
+  //   'AN_ACTION_YOU_DONT_WANT_TO_TRACK',
+  // ],
+  shouldCatchErrors: true,
+})) || compose;
+
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(sagaMiddleware)),
+);
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
