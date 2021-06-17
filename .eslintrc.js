@@ -5,18 +5,18 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
   ],
   plugins: [
-    'jsx-a11y'
+    'jsx-a11y',
   ],
   rules: {
     'arrow-parens': ['error', 'as-needed'],
     'react/jsx-filename-extension': [
       1,
       {
-        'extensions': [
+        extensions: [
           '.js',
-          '.jsx'
-        ]
-      }
+          '.jsx',
+        ],
+      },
     ],
   },
 };

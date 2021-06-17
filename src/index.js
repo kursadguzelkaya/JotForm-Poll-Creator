@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import './styles/index.css';
-import App from './components/App';
+import AppContainer from './containers/AppContainer';
 import reportWebVitals from './reportWebVitals';
 import reducers from './reducers';
 import rootSaga from './sagas';
@@ -30,10 +30,10 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <AppContainer />
     </React.StrictMode>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
