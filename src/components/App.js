@@ -2,6 +2,7 @@ import '../styles/App.css';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
+import Login from './Login';
 
 const App = ({ appText, initApp }) => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const App = ({ appText, initApp }) => {
   return (
     <div className="App">
       <Header />
-      App
+      <Login />
     </div>
   );
 };
