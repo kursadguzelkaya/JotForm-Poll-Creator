@@ -1,0 +1,35 @@
+.poll-info {
+  background-color: #bfc1ff;
+  display: flex;
+  padding: 5px 10px;
+  align-items: center;
+  margin:0px 20px 20px 20px;
+  
+}
+
+.poll-info h2 {
+  flex: 1;
+}
+
+.poll-info .date {
+  flex: 1;
+}
+
+.poll-info .attandence {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.poll-info .btn-container {
+  flex: 1;
+
+}
+
+.poll-info .btn {
+  background-color: #fff;
+  color: #5840e5;
+  padding: 5px 15px;
+  border: solid 2px #8c83e5;
+  font-size: 16px;
+}

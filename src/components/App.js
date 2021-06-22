@@ -2,7 +2,8 @@ import '../styles/App.css';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
-import Login from './Login';
+// import Login from './Login';
+import MyPolls from './MyPolls';
 
 const App = ({ appText, initApp }) => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const App = ({ appText, initApp }) => {
   return (
     <div className="App">
       <Header />
-      <Login />
+      <MyPolls />
     </div>
   );
 };

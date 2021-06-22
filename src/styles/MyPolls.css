@@ -1,0 +1,22 @@
+.my-polls {
+  background-color: #8c83e5;
+  margin: 0;
+  height: 889px;
+  margin-top: 0px;
+  padding: 50px;
+}
+
+.my-polls .polls {
+  background-color: #fff;
+  margin: 50px auto;
+  width: 70%;
+  padding: 20px;
+}
+
+.my-polls .polls .poll-infos {
+  margin-bottom: 20px;
+}
+
+#create-new-poll-btn {
+  margin-right: 600px;
+}
