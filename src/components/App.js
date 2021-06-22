@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 // import Login from './Login';
-import MyPolls from './MyPolls';
+import MyPollsContainer from '../containers/MyPollsContainer';
 
 const App = ({ appText, initApp }) => {
   useEffect(() => {
@@ -15,7 +15,7 @@ const App = ({ appText, initApp }) => {
   return (
     <div className="App">
       <Header />
-      <MyPolls />
+      <MyPollsContainer />
     </div>
   );
 };
@@ -25,9 +25,9 @@ App.propTypes = {
   initApp: PropTypes.func.isRequired,
 };
 
-App.defaulProps = {
-  appText: '',
-  initApp: f => f,
-};
+// App.defaultProps = {
+//   appText: '',
+//   initApp: f => f,
+// };
 
 export default App;
