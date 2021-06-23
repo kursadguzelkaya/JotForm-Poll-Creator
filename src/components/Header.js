@@ -12,10 +12,12 @@ const Header = ({ status, logOut }) => {
         <h1>JotForm Poll Maker</h1>
       </div>
       { status === 'authenticated' ? (
-        <div>
-          <div className="navigation">
-            <a className="nav-link" href="/">My Polls</a>
-            <a className="nav-link" href="/">Settings</a>
+        <div className="authenticated">
+          <div className="nav-container">
+            <div className="navigation">
+              <a className="nav-link" href="/">My Polls</a>
+              <a className="nav-link" href="/">Settings</a>
+            </div>
           </div>
           <div className="logout">
             <button className="btn logout-btn" type="button" onClick={logOut}>Sign Out</button>

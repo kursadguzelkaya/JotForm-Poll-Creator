@@ -12,7 +12,7 @@ const MyPolls = ({ polls, createNewPoll, openDetailsModel }) => {
         <h1>My Polls</h1>
         <div className="poll-infos">
           {polls.map(poll => (
-            <PollInfo pollName={poll.get('pollName')} date={poll.get('date')} votes={poll.get('votes').toString()} openDetailsModel={openDetailsModel} />
+            <PollInfo key={poll} pollName={poll.get('pollName')} date={poll.get('date')} votes={poll.get('votes').toString()} openDetailsModel={openDetailsModel} />
           ))}
         </div>
         <button id="create-new-poll-btn" className="btn" type="button" onClick={createNewPoll}>Create New Poll</button>

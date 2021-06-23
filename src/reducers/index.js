@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import app from './appReducer';
-import myPolls from './myPolssReducer';
+import myPolls from './myPollsReducer';
 
 const reducers = {
   app,
