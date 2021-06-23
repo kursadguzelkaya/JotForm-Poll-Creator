@@ -1,10 +1,10 @@
 import React from 'react';
-import { object } from 'prop-types';
+import { object, func } from 'prop-types';
 
 import '../styles/MyPolls.css';
 import PollInfo from './PollInfo';
 
-const MyPolls = ({ polls }) => {
+const MyPolls = ({ polls, createNewPoll, openDetailsModel }) => {
   console.log(polls);
   return (
     <div className="my-polls">
@@ -12,10 +12,10 @@ const MyPolls = ({ polls }) => {
         <h1>My Polls</h1>
         <div className="poll-infos">
           {polls.map(poll => (
-            <PollInfo pollName={poll.get('pollName')} date={poll.get('date')} votes={poll.get('votes').toString()} />
+            <PollInfo pollName={poll.get('pollName')} date={poll.get('date')} votes={poll.get('votes').toString()} openDetailsModel={openDetailsModel} />
           ))}
         </div>
-        <button id="create-new-poll-btn" className="btn" type="button" onClick={() => console.log('Create New Poll')}>Create New Poll</button>
+        <button id="create-new-poll-btn" className="btn" type="button" onClick={createNewPoll}>Create New Poll</button>
       </div>
     </div>
   );
@@ -24,6 +24,8 @@ const MyPolls = ({ polls }) => {
 MyPolls.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   polls: object,
+  createNewPoll: func.isRequired,
+  openDetailsModel: func.isRequired,
 };
 
 MyPolls.defaultProps = {

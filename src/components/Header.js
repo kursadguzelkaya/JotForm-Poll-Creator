@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, func } from 'prop-types';
 
 import '../styles/Header.css';
 
-const Header = ({ status }) => {
+const Header = ({ status, logOut }) => {
   console.log('Header');
   return (
     <div className="header">
@@ -18,7 +18,7 @@ const Header = ({ status }) => {
             <a className="nav-link" href="/">Settings</a>
           </div>
           <div className="logout">
-            <button className="btn logout-btn" type="button" onClick={() => console.log('logout button clicked')}>Sign Out</button>
+            <button className="btn logout-btn" type="button" onClick={logOut}>Sign Out</button>
           </div>
         </div>
       ) : null }
@@ -27,7 +27,8 @@ const Header = ({ status }) => {
 };
 
 Header.propTypes = {
-  status: PropTypes.string,
+  status: string,
+  logOut: func.isRequired,
 };
 
 Header.defaultProps = {

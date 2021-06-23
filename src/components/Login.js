@@ -1,16 +1,21 @@
 import React from 'react';
+import { func } from 'prop-types';
 
 import '../styles/Login.css';
 
-const Login = () => {
+const Login = ({ logIn }) => {
   console.log('Login');
   return (
     <div className="login">
       <div className="login-btn-container">
-        <button type="button" onClick={() => console.log('Login button clicked !')}>Login With JotForm</button>
+        <button type="button" onClick={logIn}>Login With JotForm</button>
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  logIn: func.isRequired,
 };
 
 export default Login;
