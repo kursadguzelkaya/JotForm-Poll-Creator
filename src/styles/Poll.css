@@ -1,0 +1,33 @@
+.poll-comp {
+  background-color: #8c83e5;
+  padding: 10px;
+  height: 869px;
+}
+
+.poll-comp .question {
+  padding: 10px;
+}
+
+.poll-comp .question h2 {
+  text-align: left;
+  margin: 10px;
+}
+
+.poll-comp .question .radio-buttons-wrapper {
+  margin: 15px 25px;
+}
+
+.poll-comp .question .radio-buttons-wrapper input {
+  text-align: left;
+  align-content: flex-start;
+  margin: 0px;
+}
+
+
+.poll-comp .question .radio-buttons-wrapper label {
+  text-align: left;
+  align-content: flex-start;
+  justify-content: flex-start;
+  left: 5px;
+  margin: 0px;
+}
