@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // import Login from './Login';
 // import MyPollsContainer from '../containers/MyPollsContainer';
 import HeaderContainer from '../containers/HeaderContainer';
-import PollCreate from './PollCreate';
+import PollCreateContainer from '../containers/PollCreateContainer';
 
 const App = ({ initApp }) => {
   useEffect(() => {
@@ -14,7 +14,7 @@ const App = ({ initApp }) => {
   return (
     <div className="App">
       <HeaderContainer status="authenticated" />
-      <PollCreate />
+      <PollCreateContainer />
     </div>
   );
 };

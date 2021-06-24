@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
-// import { object, func } from 'prop-types';
+import { func, object } from 'prop-types';
 
 import '../styles/PollCreate.css';
 
-const PollCreate = () => {
+const PollCreate = ({ addNewPoll, polls }) => {
   const [pollName, setPollName] = useState('');
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['']);
 
   const submitPoll = () => {
-    console.log('submit');
+    addNewPoll({
+      id: polls.size + 1,
+      pollName,
+      date: '12.12.21',
+      votes: 0,
+      status: 'ongoing',
+      question: {
+        question,
+        options,
+        results: [],
+      },
+    });
   };
 
   const updateOptionValue = (index, e) => {
@@ -30,21 +41,20 @@ const PollCreate = () => {
             {options.map((value, index) => <input className="input option-input" type="text" placeholder="New option" value={options[index]} onChange={e => updateOptionValue(index, e)} />)}
           </div>
         </div>
-        <button id="submit" className="btn" type="button" onSubmit={submitPoll}>Submit</button>
+        <button id="submit" className="btn" type="button" onClick={() => submitPoll()}>Submit</button>
       </div>
     </div>
   );
 };
 
-// MyPolls.propTypes = {
-//   // eslint-disable-next-line react/forbid-prop-types
-//   polls: object,
-//   createNewPoll: func.isRequired,
-//   openDetailsModel: func.isRequired,
-// };
+PollCreate.propTypes = {
+  addNewPoll: func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  polls: object,
+};
 
-// MyPolls.defaultProps = {
-//   polls: [],
-// };
+PollCreate.defaultProps = {
+  polls: [],
+};
 
 export default PollCreate;
