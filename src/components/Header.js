@@ -1,5 +1,6 @@
 import React from 'react';
 import { string, func } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import '../styles/Header.css';
 
@@ -15,8 +16,9 @@ const Header = ({ status, logOut }) => {
         <div className="authenticated">
           <div className="nav-container">
             <div className="navigation">
-              <a className="nav-link" href="/">My Polls</a>
-              <a className="nav-link" href="/">Settings</a>
+              <Link to="/myPolls">
+                <li className="nav-link" href="/">My Polls</li>
+              </Link>
             </div>
           </div>
           <div className="logout">

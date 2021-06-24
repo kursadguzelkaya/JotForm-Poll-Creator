@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { func, object } from 'prop-types';
+import I from 'immutable';
 
 import '../styles/PollCreate.css';
 
@@ -9,7 +10,7 @@ const PollCreate = ({ addNewPoll, polls }) => {
   const [options, setOptions] = useState(['']);
 
   const submitPoll = () => {
-    addNewPoll({
+    addNewPoll(I.fromJS({
       id: polls.size + 1,
       pollName,
       date: '12.12.21',
@@ -20,7 +21,7 @@ const PollCreate = ({ addNewPoll, polls }) => {
         options,
         results: [],
       },
-    });
+    }));
   };
 
   const updateOptionValue = (index, e) => {
