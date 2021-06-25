@@ -22,7 +22,9 @@ const Header = ({ status, logOut }) => {
             </div>
           </div>
           <div className="logout">
-            <button className="btn logout-btn" type="button" onClick={logOut}>Sign Out</button>
+            <Link to="/">
+              <button className="btn logout-btn" type="button" onClick={logOut}>Sign Out</button>
+            </Link>
           </div>
         </div>
       ) : null }

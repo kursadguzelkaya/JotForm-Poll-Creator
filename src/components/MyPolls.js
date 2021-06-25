@@ -1,6 +1,7 @@
 import React from 'react';
-import { array, func } from 'prop-types';
+import { func, instanceOf } from 'prop-types';
 import { Link } from 'react-router-dom';
+import I from 'immutable';
 
 import '../styles/MyPolls.css';
 import PollInfo from './PollInfo';
@@ -26,8 +27,7 @@ const MyPolls = ({ polls, createNewPoll, openDetailsModel }) => {
 };
 
 MyPolls.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  polls: array,
+  polls: instanceOf(I.List),
   createNewPoll: func.isRequired,
   openDetailsModel: func.isRequired,
 };

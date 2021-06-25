@@ -2,17 +2,18 @@ import { connect } from 'react-redux';
 
 import { logOut } from '../actions';
 import Header from '../components/Header';
+import { getLoginStatus } from '../selectors';
 
-// const mapStateToProps = state => {
-//   const polls = getPolls(state);
+const mapStateToProps = state => {
+  const status = getLoginStatus(state);
 
-//   return {
-//     polls,
-//   };
-// };
+  return {
+    status,
+  };
+};
 
 const mapActionsToProps = {
   logOut,
 };
 
-export default connect(null, mapActionsToProps)(Header);
+export default connect(mapStateToProps, mapActionsToProps)(Header);

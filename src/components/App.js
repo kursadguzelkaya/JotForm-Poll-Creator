@@ -17,7 +17,7 @@ const App = ({ initApp }) => {
   return (
     <Router>
       <div className="App">
-        <HeaderContainer status="authenticated" />
+        <HeaderContainer />
         <Switch>
           <Route path="/myPolls" component={MyPollsContainer} />
           <Route path="/createPoll" component={PollCreateContainer} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { func } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import '../styles/Login.css';
 
@@ -8,7 +9,9 @@ const Login = ({ logIn }) => {
   return (
     <div className="login">
       <div className="login-btn-container">
-        <button type="button" onClick={logIn}>Login With JotForm</button>
+        <Link to="/myPolls">
+          <button type="button" onClick={logIn}>Login With JotForm</button>
+        </Link>
       </div>
     </div>
   );
