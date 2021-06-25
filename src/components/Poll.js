@@ -1,25 +1,31 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
+import { instanceOf } from 'prop-types';
 import React from 'react';
-// import { func, object } from 'prop-types';
+import I from 'immutable';
 
 import '../styles/Poll.css';
 
-const Poll = () => {
-  console.log('Poll');
+const Poll = ({ poll }) => {
+  console.log(poll.get('question', 'fallback'));
   return (
     <div className="poll-comp">
       <div className="poll">
-        <h1>Poll Name</h1>
+        <h1>{ poll.get('pollName') }</h1>
         <div className="poll-questions">
           <div className="question">
-            <h2>Q) Choose best movie</h2>
+            <h2>
+              {poll.getIn(['question', 'questionText'], 'fallback')}
+            </h2>
             <div className="radio-buttons-wrapper">
-              <input type="radio" className="radio-button" name="radioButtonTest" value="1" id="button1" checked />
-              <label htmlFor="button1">Button 1</label>
-              <input type="radio" className="radio-button" name="radioButtonTest" value="2" id="button2" />
-              <label htmlFor="button2">Button 2</label>
-              <input type="radio" className="radio-button" name="radioButtonTest" value="3" id="button3" />
-              <label htmlFor="button3">Button 3</label>
+              {poll.getIn(['question', 'options']).map((option, index) => {
+                const optionId = `option${index.toString()}`;
+                return (
+                  <label htmlFor={optionId} className="radio">
+                    <input type="radio" className="radio-input" name="radioButtonTest" value="1" id={optionId} />
+                    <div className="radio-radio">{}</div>
+                    {option}
+                  </label>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -29,14 +35,8 @@ const Poll = () => {
   );
 };
 
-// Poll.propTypes = {
-//   addNewPoll: func.isRequired,
-//   // eslint-disable-next-line react/forbid-prop-types
-//   polls: object,
-// };
-
-// Poll.defaultProps = {
-//   polls: [],
-// };
+Poll.propTypes = {
+  poll: instanceOf(I.Map).isRequired,
+};
 
 export default Poll;

@@ -10,8 +10,8 @@ const INITIAL_STATE = I.fromJS({
       votes: 100,
       status: 'finished',
       question: {
-        question: '',
-        options: [],
+        questionText: 'Choose the best movie for you ',
+        options: ['Breaking Bad', 'Prison Break', 'Game of Thrones'],
         results: [],
       },
     },
@@ -22,7 +22,7 @@ const INITIAL_STATE = I.fromJS({
       votes: 150,
       status: 'finished',
       question: {
-        question: '',
+        questionText: '',
         options: [],
         results: [],
       },
@@ -34,7 +34,7 @@ const INITIAL_STATE = I.fromJS({
       votes: 70,
       status: 'finished',
       question: {
-        question: '',
+        questionText: '',
         options: [],
         results: [],
       },

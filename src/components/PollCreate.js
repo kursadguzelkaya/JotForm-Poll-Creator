@@ -17,7 +17,7 @@ const PollCreate = ({ addNewPoll, polls }) => {
       votes: 0,
       status: 'ongoing',
       question: {
-        question,
+        questionText: question,
         options,
         results: [],
       },
