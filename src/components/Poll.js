@@ -19,10 +19,10 @@ const Poll = ({ poll }) => {
               {poll.getIn(['question', 'options']).map((option, index) => {
                 const optionId = `option${index.toString()}`;
                 return (
-                  <label htmlFor={optionId} className="radio">
+                  <label key={option} htmlFor={optionId} className="radio">
                     <input type="radio" className="radio-input" name="radioButtonTest" value="1" id={optionId} />
                     <div className="radio-radio">{}</div>
-                    {option}
+                    {option.get('optionText')}
                   </label>
                 );
               })}

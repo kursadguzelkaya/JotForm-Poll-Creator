@@ -1,0 +1,45 @@
+.option {
+  display: flex;
+  align-items: center;
+  margin:auto;
+  width: 80%;
+}
+
+.option p {
+  margin: 10px 30px 10px 5px;
+  font-size: 20px;
+  flex: 3;
+  text-align: left;
+}
+
+.progress {
+  background-color: #d4d8d8;
+  border-radius: 20px;
+  height: 30px;
+  width: 300px;
+  flex: 5;
+}
+
+.progress-done {
+  background-color: #009879;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  height: 100%;
+  width: 100px;
+  transition: 1s ease;
+}
+
+.btn-container {
+  width: 90%;
+  position: relative;
+}
+
+#create-own-poll {
+  margin-top: 20px;
+  position: absolute;
+  right: 50px;
+}

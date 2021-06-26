@@ -11,8 +11,11 @@ const INITIAL_STATE = I.fromJS({
       status: 'finished',
       question: {
         questionText: 'Choose the best movie for you ',
-        options: ['Breaking Bad', 'Prison Break', 'Game of Thrones'],
-        results: [],
+        options: [
+          { optionText: 'Breaking Bad', optionResult: 70 },
+          { optionText: 'Prison Break', optionResult: 70 },
+          { optionText: 'Game of Thrones', optionResult: 70 },
+        ],
       },
     },
     {
@@ -22,9 +25,12 @@ const INITIAL_STATE = I.fromJS({
       votes: 150,
       status: 'finished',
       question: {
-        questionText: '',
-        options: [],
-        results: [],
+        questionText: 'Choose the best movie for you ',
+        options: [
+          { optionText: 'Breaking Bad', optionResult: 10 },
+          { optionText: 'Prison Break', optionResult: 10 },
+          { optionText: 'Game of Thrones', optionResult: 10 },
+        ],
       },
     },
     {
@@ -34,9 +40,12 @@ const INITIAL_STATE = I.fromJS({
       votes: 70,
       status: 'finished',
       question: {
-        questionText: '',
-        options: [],
-        results: [],
+        questionText: 'Choose the best movie for you ',
+        options: [
+          { optionText: 'Breaking Bad', optionResult: 100 },
+          { optionText: 'Prison Break', optionResult: 100 },
+          { optionText: 'Game of Thrones', optionResult: 100 },
+        ],
       },
     },
   ],
