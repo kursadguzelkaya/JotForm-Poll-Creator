@@ -1,5 +1,7 @@
+/* eslint-disable no-else-return */
+/* eslint-disable arrow-body-style */
 import I from 'immutable';
-import { ADD_NEW_POLL } from '../constants/actionTypes';
+import { ADD_NEW_POLL, UPDATE_POLL_RESULT } from '../constants/actionTypes';
 
 const INITIAL_STATE = I.fromJS({
   polls: [
@@ -12,9 +14,9 @@ const INITIAL_STATE = I.fromJS({
       question: {
         questionText: 'Choose the best movie for you ',
         options: [
-          { optionText: 'Breaking Bad', optionResult: 70 },
-          { optionText: 'Prison Break', optionResult: 70 },
-          { optionText: 'Game of Thrones', optionResult: 70 },
+          { optionText: 'Breaking Bad', votes: 50 },
+          { optionText: 'Prison Break', votes: 30 },
+          { optionText: 'Game of Thrones', votes: 20 },
         ],
       },
     },
@@ -27,9 +29,9 @@ const INITIAL_STATE = I.fromJS({
       question: {
         questionText: 'Choose the best movie for you ',
         options: [
-          { optionText: 'Breaking Bad', optionResult: 10 },
-          { optionText: 'Prison Break', optionResult: 10 },
-          { optionText: 'Game of Thrones', optionResult: 10 },
+          { optionText: 'Breaking Bad', votes: 70 },
+          { optionText: 'Prison Break', votes: 70 },
+          { optionText: 'Game of Thrones', votes: 10 },
         ],
       },
     },
@@ -42,9 +44,9 @@ const INITIAL_STATE = I.fromJS({
       question: {
         questionText: 'Choose the best movie for you ',
         options: [
-          { optionText: 'Breaking Bad', optionResult: 100 },
-          { optionText: 'Prison Break', optionResult: 100 },
-          { optionText: 'Game of Thrones', optionResult: 100 },
+          { optionText: 'Breaking Bad', votes: 10 },
+          { optionText: 'Prison Break', votes: 40 },
+          { optionText: 'Game of Thrones', votes: 20 },
         ],
       },
     },
@@ -55,6 +57,30 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_NEW_POLL: {
       return state.set('polls', [...state.get('polls', 'fallback'), action.payload]);
+    }
+    case UPDATE_POLL_RESULT: {
+      const { selected, id } = action.payload;
+      return state.withMutations(_state => {
+        _state
+          .update('polls', polls => {
+            return polls.map(poll => {
+              if (poll.get('id') === id) {
+                return poll.updateIn(['question', 'options'], options => {
+                  return options.map(option => {
+                    if (option.get('optionText') === selected) {
+                      return option.set('votes', option.get('votes') + 1);
+                    } else {
+                      return option;
+                    }
+                  });
+                })
+                  .set('votes', poll.get('votes') + 1);
+              } else {
+                return poll;
+              }
+            });
+          });
+      });
     }
     default:
       return state;

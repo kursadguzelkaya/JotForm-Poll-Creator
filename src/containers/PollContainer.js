@@ -3,20 +3,19 @@ import { connect } from 'react-redux';
 
 import Poll from '../components/Poll';
 import { getPoll } from '../selectors';
-// import { createNewPoll, openDetailsModel } from '../actions';
+import { updatePollResult } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
   console.log(ownProps.match.params.id);
-  const poll = getPoll(state, 1); // TODO: change 1 to id
+  const poll = getPoll(state, parseInt(ownProps.match.params.id, 10));
   console.log(poll);
   return {
     poll,
   };
 };
 
-// const mapActionsToProps = {
-//   createNewPoll,
-//   openDetailsModel,
-// };
+const mapActionsToProps = {
+  updatePollResult,
+};
 
-export default connect(mapStateToProps, null)(Poll);
+export default connect(mapStateToProps, mapActionsToProps)(Poll);

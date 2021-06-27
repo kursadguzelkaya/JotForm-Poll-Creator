@@ -3,6 +3,7 @@ import appSaga from './appSaga';
 import headerSagas from './headerSaga';
 import loginSagas from './loginSaga';
 import myPollsSagas from './myPollsSaga';
+import pollSagas from './pollSaga';
 
 export default function* rootSaga() {
   yield all([
@@ -10,5 +11,6 @@ export default function* rootSaga() {
     ...headerSagas,
     ...loginSagas,
     ...myPollsSagas,
+    ...pollSagas,
   ]);
 }

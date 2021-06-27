@@ -7,7 +7,7 @@ import { getPoll } from '../selectors';
 
 const mapStateToProps = (state, ownProps) => {
   console.log(ownProps.match.params.id);
-  const poll = getPoll(state, 1); // TODO: change 1 to id
+  const poll = getPoll(state, parseInt(ownProps.match.params.id, 10));
   console.log(poll);
   return {
     poll,

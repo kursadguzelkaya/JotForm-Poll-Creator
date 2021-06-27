@@ -1,11 +1,11 @@
-import { instanceOf } from 'prop-types';
-import React from 'react';
+import { func, instanceOf } from 'prop-types';
+import React, { useState } from 'react';
 import I from 'immutable';
 
 import '../styles/Poll.css';
 
-const Poll = ({ poll }) => {
-  console.log(poll.get('question', 'fallback'));
+const Poll = ({ poll, updatePollResult }) => {
+  const [selected, setSelected] = useState('');
   return (
     <div className="poll-comp">
       <div className="poll">
@@ -20,7 +20,7 @@ const Poll = ({ poll }) => {
                 const optionId = `option${index.toString()}`;
                 return (
                   <label key={option} htmlFor={optionId} className="radio">
-                    <input type="radio" className="radio-input" name="radioButtonTest" value="1" id={optionId} />
+                    <input type="radio" className="radio-input" name="radioButtonTest" value="1" id={optionId} onChange={() => setSelected(option.get('optionText'))} />
                     <div className="radio-radio">{}</div>
                     {option.get('optionText')}
                   </label>
@@ -29,7 +29,7 @@ const Poll = ({ poll }) => {
             </div>
           </div>
         </div>
-        <button id="submit" className="btn" type="button" onClick={() => console.log('Submit')}>Submit</button>
+        <button id="submit" className="btn" type="button" onClick={() => updatePollResult({ selected, id: poll.get('id') })}>Submit</button>
       </div>
     </div>
   );
@@ -37,6 +37,11 @@ const Poll = ({ poll }) => {
 
 Poll.propTypes = {
   poll: instanceOf(I.Map).isRequired,
+  updatePollResult: func,
+};
+
+Poll.defaultProps = {
+  updatePollResult: f => f,
 };
 
 export default Poll;

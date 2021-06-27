@@ -24,7 +24,7 @@ const App = ({ initApp }) => {
           <Route path="/createPoll" component={PollCreateContainer} />
           <Route path="/" exact component={LoginContainer} />
           <Route path="/poll/:id" component={PollContainer} />
-          <Route path="/result" component={ResultContainer} />
+          <Route path="/result/:id" component={ResultContainer} />
         </Switch>
       </div>
     </Router>

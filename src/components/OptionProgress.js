@@ -12,7 +12,7 @@ const OptionProgress = ({ optionText, optionResult }) => {
       <p>{optionText}</p>
       <div className="progress">
         <div className="progress-done" data_done={optionResult} style={{ width: `${optionResult}%`, opacity: '1' }}>
-          70%
+          {`${optionResult}%`}
         </div>
       </div>
     </div>

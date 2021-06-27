@@ -12,7 +12,7 @@ const Result = ({ poll }) => {
       <div className="poll">
         <h1>{poll.get('pollName')}</h1>
         <div className="poll-questions">
-          <QuestionResult question={poll.get('question')} />
+          <QuestionResult question={poll.get('question')} totalVotes={poll.get('votes')} />
         </div>
         <div className="btn-container">
           <button id="create-own-poll" type="button" className="btn">Create Your Own Poll</button>

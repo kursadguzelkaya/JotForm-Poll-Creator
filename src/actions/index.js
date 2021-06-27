@@ -6,4 +6,6 @@ export * from './loginActions';
 
 export * from './myPollsActions';
 
-export * from './pollCreateAction';
+export * from './pollCreateActions';
+
+export * from './pollActions';
