@@ -1,5 +1,5 @@
 .my-polls {
-  background-color: #8c83e5;
+  background-color: var(--blue);
   margin: 0;
   height: 889px;
   margin-top: 0px;

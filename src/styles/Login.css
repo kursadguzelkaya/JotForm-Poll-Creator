@@ -1,5 +1,5 @@
 .login {
-  background-color: #8c83e5;
+  background-color: var(--blue);
   height: 889px;
   margin: 0;
   padding: 50px;
@@ -17,7 +17,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #ff673d;
+  background-color: var(--orange);
   font-size: 16px;
   margin: 70px auto;
 }

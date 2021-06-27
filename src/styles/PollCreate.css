@@ -6,7 +6,7 @@
 }
 
 .poll-create {
-  background-color: #8c83e5;
+  background-color: var(--blue);
   padding: 10px;
   height: 869px;
 }
@@ -31,7 +31,7 @@
 }
 
 .poll-questions .question {
-  background-color: #bfc1ff;
+  background-color: var(--lightBlue);
   display: block;
   margin: auto;
   width: 80%;
@@ -50,6 +50,6 @@
 
 #submit {
   margin-top: 30px;
-  background-color: #00994d;
+  background-color: var(--green);
 }
 

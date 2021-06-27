@@ -21,7 +21,7 @@
 }
 
 .progress-done {
-  background-color: #009879;
+  background-color: var(--green);
   border-radius: 20px;
   color: #fff;
   display: flex;
