@@ -1,0 +1,26 @@
+.share-poll {
+  padding: 10px;
+  background-color: var(--blue);
+  height: 867px;
+}
+
+.share-poll .share-container {
+  background-color: #fff;
+  width: 50%;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.share-poll .share-container p{
+  background-color: var(--lightBlue);
+  border: var(--darkBlue) solid 2px;
+  border-radius: 4px;
+  width: 50%;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.share-poll .btn {
+  margin: 10px 20px;
+}

@@ -9,6 +9,7 @@ import PollCreateContainer from '../containers/PollCreateContainer';
 import MyPollsContainer from '../containers/MyPollsContainer';
 import PollContainer from '../containers/PollContainer';
 import ResultContainer from '../containers/ResultContainer';
+import SharePollContainer from '../containers/SharePollContainer';
 
 const App = ({ initApp }) => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const App = ({ initApp }) => {
           <Route path="/" exact component={LoginContainer} />
           <Route path="/poll/:id" component={PollContainer} />
           <Route path="/result/:id" component={ResultContainer} />
+          <Route path="/share/:id" component={SharePollContainer} />
         </Switch>
       </div>
     </Router>
