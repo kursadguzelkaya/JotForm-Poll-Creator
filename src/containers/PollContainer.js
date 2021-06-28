@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Poll from '../components/Poll';
 import { getPoll } from '../selectors';
-import { updatePollResult } from '../actions';
+import { submitPoll } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
   console.log(ownProps.match.params.id);
@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapActionsToProps = {
-  updatePollResult,
+  submitPoll,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Poll);

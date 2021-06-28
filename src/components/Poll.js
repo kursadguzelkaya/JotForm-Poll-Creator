@@ -4,7 +4,7 @@ import I from 'immutable';
 
 import '../styles/Poll.css';
 
-const Poll = ({ poll, updatePollResult }) => {
+const Poll = ({ poll, submitPoll, history }) => {
   const [selected, setSelected] = useState('');
   return (
     <div className="poll-comp">
@@ -29,7 +29,7 @@ const Poll = ({ poll, updatePollResult }) => {
             </div>
           </div>
         </div>
-        <button id="submit" className="btn" type="button" onClick={() => updatePollResult({ selected, id: poll.get('id') })}>Submit</button>
+        <button id="submit" className="btn" type="button" onClick={() => submitPoll({ selected, id: poll.get('id'), callback: () => history.push(`/result/${poll.get('id')}`) })}>Submit</button>
       </div>
     </div>
   );
@@ -37,11 +37,12 @@ const Poll = ({ poll, updatePollResult }) => {
 
 Poll.propTypes = {
   poll: instanceOf(I.Map).isRequired,
-  updatePollResult: func,
+  submitPoll: func,
+  history: instanceOf(I.Map).isRequired,
 };
 
 Poll.defaultProps = {
-  updatePollResult: f => f,
+  submitPoll: f => f,
 };
 
 export default Poll;

@@ -1,6 +1,7 @@
 import { instanceOf } from 'prop-types';
 import React from 'react';
 import I from 'immutable';
+import { Link } from 'react-router-dom';
 
 import '../styles/Result.css';
 import QuestionResult from './QuestionResult';
@@ -15,7 +16,9 @@ const Result = ({ poll }) => {
           <QuestionResult question={poll.get('question')} totalVotes={poll.get('votes')} />
         </div>
         <div className="btn-container">
-          <button id="create-own-poll" type="button" className="btn">Create Your Own Poll</button>
+          <Link to="/">
+            <button id="create-own-poll" type="button" className="btn">Create Your Own Poll</button>
+          </Link>
         </div>
       </div>
     </div>
