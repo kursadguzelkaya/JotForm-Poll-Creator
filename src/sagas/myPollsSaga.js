@@ -1,11 +1,5 @@
 import { takeEvery } from 'redux-saga/effects';
-import { CREATE_NEW_POLL, OPEN_DETAILS_MODEL } from '../constants/actionTypes';
-
-function* openDetailsModel() {
-  // eslint-disable-next-line no-console
-  console.log('openDetailsModel saga called');
-  yield;
-}
+import { CREATE_NEW_POLL } from '../constants/actionTypes';
 
 function* createNewPoll() {
   // eslint-disable-next-line no-console
@@ -14,7 +8,6 @@ function* createNewPoll() {
 }
 
 const myPollsSagas = [
-  takeEvery(OPEN_DETAILS_MODEL, openDetailsModel),
   takeEvery(CREATE_NEW_POLL, createNewPoll),
 ];
 

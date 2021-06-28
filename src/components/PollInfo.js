@@ -1,13 +1,18 @@
 import React from 'react';
-import { string, func } from 'prop-types';
+import {
+  bool, func, number, string,
+} from 'prop-types';
 
 import '../styles/PollInfo.css';
 
 const PollInfo = ({
+  id,
   pollName,
   date,
   votes,
-  openDetailsModel,
+  setShowModal,
+  showModal,
+  setPollId,
 }) => {
   console.log('PollInfo');
   return (
@@ -19,17 +24,27 @@ const PollInfo = ({
         <img src="" alt="profile" />
       </div>
       <div className="btn-container">
-        <button className="btn" type="button" onClick={openDetailsModel}>Details</button>
+        <button className="btn" type="button" onClick={() => { setShowModal(!showModal); setPollId(id); }}>Details</button>
       </div>
     </div>
   );
 };
 
 PollInfo.propTypes = {
+  id: number,
   pollName: string.isRequired,
   date: string.isRequired,
   votes: string.isRequired,
-  openDetailsModel: func.isRequired,
+  showModal: bool,
+  setShowModal: func,
+  setPollId: func,
+};
+
+PollInfo.defaultProps = {
+  id: 0,
+  showModal: false,
+  setShowModal: f => f,
+  setPollId: f => f,
 };
 
 export default PollInfo;

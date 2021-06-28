@@ -1,29 +1,37 @@
-import { instanceOf } from 'prop-types';
+import { func, instanceOf } from 'prop-types';
 import React from 'react';
 import I from 'immutable';
+import ReactDom from 'react-dom';
 
-import '../styles/Result.css';
+import '../styles/DetailsModal.css';
 import QuestionResult from './QuestionResult';
 
-const DetailsModal = ({ poll }) => {
+const DetailsModal = ({ poll, setShowModal }) => {
   console.log('Result');
-  return (
-    <div className="poll-comp">
-      <div className="poll">
+  return ReactDom.createPortal(
+    <>
+      <div className="overlay">{}</div>
+      <div className="modal">
         <h1>{poll.get('pollName')}</h1>
         <div className="poll-questions">
-          <QuestionResult question={poll.get('question')} />
+          <QuestionResult question={poll.get('question')} totalVotes={poll.get('votes')} />
         </div>
         <div className="btn-container">
-          <button id="close-modal" type="button" className="btn">Close</button>
+          <button id="close-modal" type="button" className="btn" onClick={() => setShowModal(false)}>Close</button>
         </div>
       </div>
-    </div>
+    </>,
+    document.getElementById('portal'),
   );
 };
 
 DetailsModal.propTypes = {
   poll: instanceOf(I.Map).isRequired,
+  setShowModal: func,
+};
+
+DetailsModal.defaultProps = {
+  setShowModal: f => f,
 };
 
 export default DetailsModal;
