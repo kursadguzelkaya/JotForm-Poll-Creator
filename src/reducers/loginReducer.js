@@ -1,6 +1,6 @@
 import I from 'immutable';
 
-import { LOG_IN, LOG_OUT } from '../constants/actionTypes';
+import { LOG_IN_SUCCESS, LOG_OUT } from '../constants/actionTypes';
 
 const INITIAL_STATE = I.fromJS({
   status: 'not-authenticated',
@@ -8,7 +8,7 @@ const INITIAL_STATE = I.fromJS({
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case LOG_IN: {
+    case LOG_IN_SUCCESS: {
       return state.set('status', 'authenticated');
     }
     case LOG_OUT: {

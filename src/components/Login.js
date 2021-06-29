@@ -1,24 +1,23 @@
 import React from 'react';
-import { func } from 'prop-types';
-import { Link } from 'react-router-dom';
+import { func, object } from 'prop-types';
 
 import '../styles/Login.css';
 
-const Login = ({ logIn }) => {
+const Login = ({ logInRequest, history }) => {
   console.log('Login');
   return (
     <div className="login">
       <div className="login-btn-container">
-        <Link to="/myPolls">
-          <button type="button" onClick={logIn}>Login With JotForm</button>
-        </Link>
+        <button type="button" onClick={() => logInRequest(history)}>Login With JotForm</button>
       </div>
     </div>
   );
 };
 
 Login.propTypes = {
-  logIn: func.isRequired,
+  logInRequest: func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  history: object.isRequired,
 };
 
 export default Login;
