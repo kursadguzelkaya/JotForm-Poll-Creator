@@ -7,6 +7,12 @@ export const LOG_IN = 'LOG_IN';
 
 export const LOG_OUT = 'LOG_OUT';
 
+export const CREATE_POLL_REQUEST = 'CREATE_POLL_REQUEST';
+
+export const CREATE_POLL_SUCCESS = 'CREATE_POLL_SUCCESS';
+
+export const CREATE_POLL_FAIL = 'CREATE_POLL_FAIL';
+
 export const ADD_NEW_POLL = 'ADD_NEW_POLL';
 
 export const SUBMIT_POLL_REQUEST = 'SUBMIT_POLL_REQUEST';

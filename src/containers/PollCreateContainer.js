@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { addNewPoll } from '../actions';
+import { createPollRequest } from '../actions';
 import { getPolls } from '../selectors';
 
 import PollCreate from '../components/PollCreate';
@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 };
 
 const mapActionsToProps = {
-  addNewPoll,
+  createPollRequest,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(PollCreate);

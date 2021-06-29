@@ -1,5 +1,5 @@
 import React from 'react';
-import { number, string } from 'prop-types';
+import { string } from 'prop-types';
 
 import '../styles/SharePoll.css';
 
@@ -19,7 +19,7 @@ const SharePoll = ({ pollName, id }) => {
 
 SharePoll.propTypes = {
   pollName: string.isRequired,
-  id: number.isRequired,
+  id: string.isRequired,
 };
 
 export default SharePoll;

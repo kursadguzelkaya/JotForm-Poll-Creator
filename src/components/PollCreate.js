@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
-import { func, object } from 'prop-types';
+import { func, instanceOf } from 'prop-types';
 import I from 'immutable';
 
 import '../styles/PollCreate.css';
 
-const PollCreate = ({ addNewPoll, polls }) => {
+const PollCreate = ({ createPollRequest, polls, history }) => {
   const [pollName, setPollName] = useState('');
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['']);
 
   const submitPoll = () => {
-    addNewPoll(I.fromJS({
-      id: polls.size + 1,
-      pollName,
-      date: '12.12.21',
-      votes: 0,
-      status: 'ongoing',
-      question: {
-        questionText: question,
-        options,
-        results: [],
-      },
-    }));
+    const newOptions = options.map(option => ({ optionText: option, votes: 0 }));
+    createPollRequest({
+      poll: I.fromJS({
+        id: polls.size + 1,
+        pollName,
+        date: '12.12.21',
+        votes: 0,
+        status: 'ongoing',
+        question: {
+          questionText: question,
+          options: newOptions,
+          results: [],
+        },
+      }),
+      callback: () => history.push(`/share/${polls.size + 1}`),
+    });
   };
 
   const updateOptionValue = (index, e) => {
@@ -49,13 +53,9 @@ const PollCreate = ({ addNewPoll, polls }) => {
 };
 
 PollCreate.propTypes = {
-  addNewPoll: func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  polls: object,
-};
-
-PollCreate.defaultProps = {
-  polls: [],
+  createPollRequest: func.isRequired,
+  polls: instanceOf(I.List).isRequired,
+  history: instanceOf(I.Map).isRequired,
 };
 
 export default PollCreate;

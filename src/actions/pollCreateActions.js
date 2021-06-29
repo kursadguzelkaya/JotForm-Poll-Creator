@@ -1,7 +1,7 @@
-import { ADD_NEW_POLL } from '../constants/actionTypes';
+import { CREATE_POLL_REQUEST } from '../constants/actionTypes';
 
 // eslint-disable-next-line import/prefer-default-export
-export const addNewPoll = poll => ({
-  type: ADD_NEW_POLL,
+export const createPollRequest = poll => ({
+  type: CREATE_POLL_REQUEST,
   payload: poll,
 });
