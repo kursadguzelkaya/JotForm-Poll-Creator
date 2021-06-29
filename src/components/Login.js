@@ -4,7 +4,7 @@ import { func, object } from 'prop-types';
 import '../styles/Login.css';
 
 const Login = ({ logInRequest, history }) => {
-  console.log('Login');
+  console.log('Login', history);
   return (
     <div className="login">
       <div className="login-btn-container">
