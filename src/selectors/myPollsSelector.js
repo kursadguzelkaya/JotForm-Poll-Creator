@@ -7,7 +7,9 @@ export const getPolls = createSelector(
   myPolls => myPolls.get('polls', []),
 );
 
-export const getPoll = (state, id) => {
-  console.log(id);
-  return getPolls(state).find(poll => poll.get('id') === id);
-};
+export const getPoll = (state, id) => getPolls(state).find(poll => poll.get('id') === id);
+
+export const getStatus = createSelector(
+  [getMyPolls],
+  myPolls => myPolls.get('status', 'error'),
+);

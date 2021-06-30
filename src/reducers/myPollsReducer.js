@@ -1,9 +1,15 @@
 /* eslint-disable no-else-return */
 /* eslint-disable arrow-body-style */
 import I from 'immutable';
-import { ADD_NEW_POLL, UPDATE_POLL_RESULT } from '../constants/actionTypes';
+import {
+  ADD_NEW_POLL,
+  TAKE_USER_POLLS_REQUEST,
+  TAKE_USER_POLLS_SUCCESS,
+  UPDATE_POLL_RESULT,
+} from '../constants/actionTypes';
 
 const INITIAL_STATE = I.fromJS({
+  status: '',
   polls: [
     {
       id: 1,
@@ -81,6 +87,12 @@ export default (state = INITIAL_STATE, action) => {
             });
           });
       });
+    }
+    case TAKE_USER_POLLS_REQUEST: {
+      return state.set('status', 'loading');
+    }
+    case TAKE_USER_POLLS_SUCCESS: {
+      return state.set('polls', [...state.get('polls', 'fallback'), ...action.payload]).set('status', 'ready');
     }
     default:
       return state;
