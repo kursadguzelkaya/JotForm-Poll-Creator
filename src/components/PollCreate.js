@@ -24,7 +24,7 @@ const PollCreate = ({ createPollRequest, polls, history }) => {
           results: [],
         },
       }),
-      callback: () => history.push(`/share/${polls.size + 1}`),
+      history,
     });
   };
 
