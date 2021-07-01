@@ -7,7 +7,7 @@ import { submitPoll } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
   console.log(ownProps.match.params.id);
-  const poll = getPoll(state, parseInt(ownProps.match.params.id, 10));
+  const poll = getPoll(state, ownProps.match.params.id);
   console.log(poll);
   return {
     poll,
