@@ -6,9 +6,7 @@ import { getPoll } from '../selectors';
 // import { createNewPoll, openDetailsModel } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps.match.params.id);
-  const poll = getPoll(state, parseInt(ownProps.match.params.id, 10));
-  console.log(poll);
+  const poll = getPoll(state, ownProps.match.params.id);
   return {
     poll,
   };
