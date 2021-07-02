@@ -42,11 +42,17 @@ const PollCreate = ({ createPollRequest, polls, history }) => {
         <div className="poll-questions">
           <div className="question">
             <input className="input question-input" type="text" placeholder="Ask a question..." value={question} onChange={e => setQuestion(e.target.value)} />
-            <button className="btn" type="button" onClick={() => setOptions([...options, ''])}>New Option</button>
+            <button className="btn" type="button" onClick={() => setOptions([...options, ''])}>
+              <i className="fas fa-plus-circle icon" />
+              New Option
+            </button>
             {options.map((value, index) => <input className="input option-input" type="text" placeholder="New option" value={options[index]} onChange={e => updateOptionValue(index, e)} />)}
           </div>
         </div>
-        <button id="submit" className="btn" type="button" onClick={() => submitPoll()}>Submit</button>
+        <button id="submit" className="btn" type="button" onClick={() => submitPoll()}>
+          <i className="far fa-paper-plane icon" />
+          Submit
+        </button>
       </div>
     </div>
   );

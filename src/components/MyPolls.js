@@ -34,7 +34,10 @@ const MyPolls = ({ polls, status }) => {
           </div>
         )}
         <Link to="/createPoll">
-          <button id="create-new-poll-btn" className="btn" type="button">Create New Poll</button>
+          <button id="create-new-poll-btn" className="btn" type="button">
+            <i className="far fa-file-alt icon" />
+            Create New Poll
+          </button>
         </Link>
       </div>
     </div>

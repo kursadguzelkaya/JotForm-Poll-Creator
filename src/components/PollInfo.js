@@ -24,7 +24,10 @@ const PollInfo = ({
         <img src="" alt="profile" />
       </div>
       <div className="btn-container">
-        <button className="btn" type="button" onClick={() => { setShowModal(!showModal); setPollId(id); }}>Details</button>
+        <button className="btn" type="button" onClick={() => { setShowModal(!showModal); setPollId(id); }}>
+          <i className="fas fa-info-circle icon" />
+          Details
+        </button>
       </div>
     </div>
   );

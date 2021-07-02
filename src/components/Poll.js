@@ -29,7 +29,10 @@ const Poll = ({ poll, submitPoll, history }) => {
             </div>
           </div>
         </div>
-        <button id="submit" className="btn" type="button" onClick={() => submitPoll({ selected, id: poll.get('id'), callback: () => history.push(`/result/${poll.get('id')}`) })}>Submit</button>
+        <button id="submit" className="btn" type="button" onClick={() => submitPoll({ selected, id: poll.get('id'), callback: () => history.push(`/result/${poll.get('id')}`) })}>
+          <i className="far fa-paper-plane icon" />
+          Submit
+        </button>
       </div>
     </div>
   );

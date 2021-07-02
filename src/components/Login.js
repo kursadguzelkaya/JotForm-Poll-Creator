@@ -8,7 +8,10 @@ const Login = ({ logInRequest, history }) => {
   return (
     <div className="login">
       <div className="login-btn-container">
-        <button type="button" onClick={() => logInRequest(history)}>Login With JotForm</button>
+        <button type="button" onClick={() => logInRequest(history)} className="btn">
+          <i className="fas fa-sign-in-alt icon" />
+          Login With JotForm
+        </button>
       </div>
     </div>
   );

@@ -17,13 +17,16 @@ const Header = ({ status, logOut }) => {
           <div className="nav-container">
             <div className="navigation">
               <Link to="/myPolls">
-                <li className="nav-link" href="/">My Polls</li>
+                <p className="nav-link" href="/">My Polls</p>
               </Link>
             </div>
           </div>
           <div className="logout">
             <Link to="/">
-              <button className="btn logout-btn" type="button" onClick={logOut}>Sign Out</button>
+              <button className="btn logout-btn" type="button" onClick={logOut}>
+                <i className="fas fa-sign-out-alt icon" />
+                Sign Out
+              </button>
             </Link>
           </div>
         </div>

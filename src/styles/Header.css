@@ -38,12 +38,3 @@
 .logout {
   flex: 2;
 }
-
-.btn {
-  background-color: var(--darkBlue);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
-}

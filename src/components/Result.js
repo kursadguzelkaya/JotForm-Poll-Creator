@@ -17,7 +17,10 @@ const Result = ({ poll }) => {
         </div>
         <div className="btn-container">
           <Link to="/">
-            <button id="create-own-poll" type="button" className="btn">Create Your Own Poll</button>
+            <button id="create-own-poll" type="button" className="btn">
+              <i className="far fa-file-alt icon" />
+              Create Your Own Poll
+            </button>
           </Link>
         </div>
       </div>

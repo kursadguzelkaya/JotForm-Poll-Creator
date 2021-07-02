@@ -17,7 +17,10 @@ const DetailsModal = ({ poll, setShowModal }) => {
           <QuestionResult question={poll.get('question')} totalVotes={poll.get('votes')} />
         </div>
         <div className="btn-container">
-          <button id="close-modal" type="button" className="btn" onClick={() => setShowModal(false)}>Close</button>
+          <button id="close-modal" type="button" className="btn" onClick={() => setShowModal(false)}>
+            <i className="fas fa-times-circle icon" />
+            Close
+          </button>
         </div>
       </div>
     </>,
