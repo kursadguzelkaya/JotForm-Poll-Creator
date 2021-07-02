@@ -21,7 +21,7 @@ const PollInfo = ({
       <p className="date">{date}</p>
       <div className="attandence">
         <p>{votes}</p>
-        <img src="" alt="profile" />
+        <i className="fas fa-user icon" />
       </div>
       <div className="btn-container">
         <button className="btn" type="button" onClick={() => { setShowModal(!showModal); setPollId(id); }}>
