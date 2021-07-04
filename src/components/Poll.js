@@ -1,11 +1,35 @@
 import { func, instanceOf } from 'prop-types';
 import React, { useState } from 'react';
 import I from 'immutable';
+import { io } from 'socket.io-client';
 
 import '../styles/Poll.css';
 
-const Poll = ({ poll, submitPoll, history }) => {
+const socket = io('http://localhost:4000');
+console.log(socket);
+
+const Poll = ({
+  poll,
+  submitPoll,
+  updatePoll,
+  history,
+}) => {
   const [selected, setSelected] = useState('');
+
+  const submitClick = () => {
+    submitPoll({
+      selected,
+      id: poll.get('id'),
+      callback: () => history.push(`/result/${poll.get('id')}`),
+    });
+    socket.emit('submit-poll', selected);
+  };
+
+  socket.on('update-result', value => {
+    console.log(value);
+    updatePoll({ selected: value, id: poll.get('id') });
+  });
+
   return (
     <div className="poll-comp">
       <div className="poll">
@@ -29,7 +53,7 @@ const Poll = ({ poll, submitPoll, history }) => {
             </div>
           </div>
         </div>
-        <button id="submit" className="btn" type="button" onClick={() => submitPoll({ selected, id: poll.get('id'), callback: () => history.push(`/result/${poll.get('id')}`) })}>
+        <button id="submit" className="btn" type="button" onClick={submitClick}>
           <i className="far fa-paper-plane icon" />
           Submit
         </button>
@@ -41,11 +65,13 @@ const Poll = ({ poll, submitPoll, history }) => {
 Poll.propTypes = {
   poll: instanceOf(I.Map).isRequired,
   submitPoll: func,
+  updatePoll: func,
   history: instanceOf(I.Map).isRequired,
 };
 
 Poll.defaultProps = {
   submitPoll: f => f,
+  updatePoll: f => f,
 };
 
 export default Poll;

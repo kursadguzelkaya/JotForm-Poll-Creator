@@ -1,7 +1,12 @@
-import { SUBMIT_POLL_REQUEST } from '../constants/actionTypes';
+import { SUBMIT_POLL_REQUEST, UPDATE_POLL_RESULT } from '../constants/actionTypes';
 
 // eslint-disable-next-line import/prefer-default-export
 export const submitPoll = value => ({
   type: SUBMIT_POLL_REQUEST,
+  payload: value,
+});
+
+export const updatePoll = value => ({
+  type: UPDATE_POLL_RESULT,
   payload: value,
 });
