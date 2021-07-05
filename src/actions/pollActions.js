@@ -1,4 +1,4 @@
-import { SUBMIT_POLL_REQUEST, UPDATE_POLL_RESULT } from '../constants/actionTypes';
+import { GET_POLL_REQUEST, SUBMIT_POLL_REQUEST, UPDATE_POLL_RESULT } from '../constants/actionTypes';
 
 // eslint-disable-next-line import/prefer-default-export
 export const submitPoll = value => ({
@@ -9,4 +9,9 @@ export const submitPoll = value => ({
 export const updatePoll = value => ({
   type: UPDATE_POLL_RESULT,
   payload: value,
+});
+
+export const getPollRequest = id => ({
+  type: GET_POLL_REQUEST,
+  payload: id,
 });

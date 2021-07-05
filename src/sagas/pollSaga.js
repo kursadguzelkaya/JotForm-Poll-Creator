@@ -1,16 +1,25 @@
 import {
   call,
   put,
-  select,
+  // select,
   takeEvery,
 } from 'redux-saga/effects';
+import I from 'immutable';
 
 import {
   ADD_SUBMISSION_REQUEST,
+  GET_POLL_FAIL,
+  GET_POLL_REQUEST,
+  GET_POLL_SUCCESS,
   SUBMIT_POLL_FAIL, SUBMIT_POLL_REQUEST, SUBMIT_POLL_SUCCESS, UPDATE_POLL_RESULT,
 } from '../constants/actionTypes';
-import { getQuestionsOfForm } from '../lib/api/unsplashService';
-import { getAPIKey } from '../selectors';
+import {
+  addSubmission,
+  getForm,
+  getFormSubmissions,
+  getQuestionsOfForm,
+} from '../lib/api/unsplashService';
+import { API_KEY } from '../constants/adminKey';
 
 function* submitRequest({ payload: { selected, id, callback } }) {
   console.log('submitted');
@@ -32,16 +41,70 @@ function* updateResults({ payload }) {
   yield put({ type: UPDATE_POLL_RESULT, payload });
 }
 
-function* addSubmisson({ payload: { id } }) {
-  const API_KEY = yield select(getAPIKey);
-  const res = yield call(getQuestionsOfForm, API_KEY, id);
+function* addSubmisson({ payload: { selected, id } }) {
+  // const API_KEY = yield select(getAPIKey);
+  // const res = yield call(getQuestionsOfForm, API_KEY, id);
+  const submission = {
+    q3_questionId: selected,
+  };
+  const res = yield call(addSubmission, id, submission);
   console.log(res);
+}
+
+function* getPollRequest({ payload }) {
+  try {
+    const { data: { content } } = yield call(getForm, API_KEY, payload);
+
+    const {
+      id,
+      // eslint-disable-next-line camelcase
+      created_at,
+      title,
+      count,
+    } = content;
+    const pollName = title.substring(11, title.length - 1);
+
+    // Get questions
+    const { data } = yield call(getQuestionsOfForm, API_KEY, id);
+
+    // Get submissons
+    const res = yield call(getFormSubmissions, API_KEY, id);
+
+    // Update votes with submissons
+    const options = data.content['3'].options.split('|').map(option => {
+      let votes = 0;
+      // eslint-disable-next-line no-return-assign
+      res.data.content.map(submisson => (submisson.answers['3'].answer === option ? votes += 1 : null));
+      return ({ optionText: option, votes });
+    });
+
+    // Create new poll object from form
+    const newPoll = I.fromJS({
+      id,
+      pollName,
+      date: created_at.substring(0, 11),
+      votes: count,
+      status: 'finished', // TODO: Update status
+      question: {
+        questionText: data.content['3'].text,
+        options,
+      },
+    });
+
+    yield put({ type: GET_POLL_SUCCESS, payload: newPoll });
+
+    console.log(newPoll);
+  } catch (error) {
+    yield put({ type: GET_POLL_FAIL, payload: error.message });
+    console.log(error);
+  }
 }
 
 const pollSagas = [
   takeEvery(SUBMIT_POLL_REQUEST, submitRequest),
   takeEvery(SUBMIT_POLL_SUCCESS, updateResults),
   takeEvery(ADD_SUBMISSION_REQUEST, addSubmisson),
+  takeEvery(GET_POLL_REQUEST, getPollRequest),
 ];
 
 export default pollSagas;

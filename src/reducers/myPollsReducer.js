@@ -3,6 +3,8 @@
 import I from 'immutable';
 import {
   ADD_NEW_POLL,
+  GET_POLL_REQUEST,
+  GET_POLL_SUCCESS,
   TAKE_USER_POLLS_REQUEST,
   TAKE_USER_POLLS_SUCCESS,
   UPDATE_POLL_RESULT,
@@ -80,7 +82,7 @@ export default (state = INITIAL_STATE, action) => {
                     }
                   });
                 })
-                  .set('votes', poll.get('votes') + 1);
+                  .set('votes', parseInt(poll.get('votes'), 10) + 1);
               } else {
                 return poll;
               }
@@ -93,6 +95,12 @@ export default (state = INITIAL_STATE, action) => {
     }
     case TAKE_USER_POLLS_SUCCESS: {
       return state.set('polls', [...state.get('polls', 'fallback'), ...action.payload]).set('status', 'ready');
+    }
+    case GET_POLL_REQUEST: {
+      return state.set('status', 'loading');
+    }
+    case GET_POLL_SUCCESS: {
+      return state.set('polls', [...state.get('polls', 'fallback'), action.payload]).set('status', 'ready');
     }
     default:
       return state;
