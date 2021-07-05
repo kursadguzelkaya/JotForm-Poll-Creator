@@ -75,7 +75,7 @@ function* addNewPoll({ payload: { poll, history } }) {
         type: 'control_radio',
         text: poll.getIn(['question', 'questionText']),
         order: '2',
-        name: 'Question 1',
+        name: 'questionId',
         options,
         qid: '3',
       },
