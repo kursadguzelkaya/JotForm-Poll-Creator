@@ -6,7 +6,6 @@ import { initApp } from '../actions';
 
 const mapStateToProps = state => {
   const appText = getAppText(state);
-
   return {
     appText,
   };

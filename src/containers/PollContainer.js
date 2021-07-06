@@ -25,10 +25,8 @@ const PollContainer = ({
   errors,
 }) => {
   useEffect(() => {
-    console.log('PollContainer rendered');
-    console.log(id);
     getPollRequest(id);
-  }, []);
+  }, [getPollRequest, id]);
 
   return (
     <div>
