@@ -4,14 +4,19 @@ import { connect } from 'react-redux';
 import {
   func,
   instanceOf,
-  number,
+  shape,
   string,
 } from 'prop-types';
 import I from 'immutable';
 
 import Poll from '../components/Poll';
 import { getPoll, getStatus } from '../selectors';
-import { submitPoll, updatePoll, getPollRequest } from '../actions';
+import {
+  submitPoll,
+  updatePoll,
+  getPollRequest,
+  initSocket,
+} from '../actions';
 import { getErrors } from '../selectors/errorSelector';
 
 const PollContainer = ({
@@ -21,12 +26,14 @@ const PollContainer = ({
   submitPoll,
   updatePoll,
   getPollRequest,
+  initSocket,
   history,
   errors,
 }) => {
   useEffect(() => {
     getPollRequest(id);
-  }, [getPollRequest, id]);
+    initSocket();
+  }, [getPollRequest, id, initSocket]);
 
   return (
     <div>
@@ -44,23 +51,27 @@ const PollContainer = ({
 };
 
 PollContainer.propTypes = {
-  id: number,
+  id: string,
   status: string,
-  poll: instanceOf(I.Map).isRequired,
+  poll: instanceOf(I.Map),
   submitPoll: func,
   updatePoll: func,
   getPollRequest: func,
-  history: instanceOf(I.Map).isRequired,
+  initSocket: func,
+  history: shape({}),
   errors: instanceOf(I.List),
 };
 
 PollContainer.defaultProps = {
-  id: 0,
+  id: '',
   status: '',
   submitPoll: f => f,
   updatePoll: f => f,
   getPollRequest: f => f,
+  initSocket: f => f,
   errors: I.fromJS({}),
+  poll: I.fromJS({}),
+  history: {},
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -80,6 +91,7 @@ const mapActionsToProps = {
   submitPoll,
   updatePoll,
   getPollRequest,
+  initSocket,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(PollContainer);

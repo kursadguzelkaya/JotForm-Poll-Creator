@@ -1,17 +1,12 @@
-import { func, instanceOf } from 'prop-types';
+import { func, instanceOf, shape } from 'prop-types';
 import React, { useState } from 'react';
 import I from 'immutable';
-import { io } from 'socket.io-client';
 
 import '../styles/Poll.css';
-
-const socket = io('http://localhost:4000');
-console.log(socket);
 
 const Poll = ({
   poll,
   submitPoll,
-  updatePoll,
   history,
   errors,
 }) => {
@@ -23,13 +18,7 @@ const Poll = ({
       id: poll.get('id'),
       callback: () => history.push(`/result/${poll.get('id')}`),
     });
-    socket.emit('submit-poll', selected);
   };
-
-  socket.on('update-result', value => {
-    console.log(value);
-    updatePoll({ selected: value, id: poll.get('id') });
-  });
 
   return (
     <div className="poll-comp">
@@ -73,17 +62,17 @@ const Poll = ({
 };
 
 Poll.propTypes = {
-  poll: instanceOf(I.Map).isRequired,
+  poll: instanceOf(I.Map),
   submitPoll: func,
-  updatePoll: func,
-  history: instanceOf(I.Map).isRequired,
-  errors: instanceOf(I.Map),
+  history: shape({}),
+  errors: instanceOf(I.List),
 };
 
 Poll.defaultProps = {
+  poll: I.fromJS({}),
   submitPoll: f => f,
-  updatePoll: f => f,
   errors: I.fromJS({}),
+  history: {},
 };
 
 export default Poll;

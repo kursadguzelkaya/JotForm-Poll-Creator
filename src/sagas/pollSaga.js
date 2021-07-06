@@ -3,8 +3,11 @@ import {
   put,
   delay,
   takeEvery,
+  select,
+  take,
 } from 'redux-saga/effects';
 import I from 'immutable';
+import { eventChannel } from 'redux-saga';
 
 import {
   ADD_SUBMISSION_REQUEST,
@@ -12,7 +15,11 @@ import {
   GET_POLL_FAIL,
   GET_POLL_REQUEST,
   GET_POLL_SUCCESS,
-  SUBMIT_POLL_FAIL, SUBMIT_POLL_REQUEST, SUBMIT_POLL_SUCCESS, UPDATE_POLL_RESULT,
+  SUBMIT_POLL_FAIL,
+  SUBMIT_POLL_REQUEST,
+  SUBMIT_POLL_SUCCESS,
+  UPDATE_POLL_RESULT,
+  UPDATE_RESULT_SOCKET,
 } from '../constants/actionTypes';
 import {
   addSubmission,
@@ -21,6 +28,36 @@ import {
   getQuestionsOfForm,
 } from '../lib/api/unsplashService';
 import { API_KEY } from '../constants/adminKey';
+import { getSocket } from '../selectors';
+
+function subscribeToSocket(socket, id) {
+  return eventChannel(emit => {
+    const updatePollResults = data => {
+      console.log(data);
+      emit({ type: UPDATE_POLL_RESULT, payload: { selected: data, id } });
+    };
+    console.log('heree');
+    socket.on('update-result', updatePollResults);
+
+    return () => {};
+  });
+}
+
+function* updateResultSocket({ payload: { selected, id } }) {
+  console.log('socket is updtatedd');
+  // Get socket from store
+  const socket = yield select(getSocket);
+
+  // Create submit-poll event on socket
+  socket.emit('submit-poll', selected);
+
+  const channelToSubscribe = subscribeToSocket(socket, id);
+
+  while (true) {
+    const channelledAction = yield take(channelToSubscribe);
+    yield put(channelledAction);
+  }
+}
 
 function* submitRequest({ payload: { selected, id, callback } }) {
   console.log('submitted');
@@ -30,6 +67,9 @@ function* submitRequest({ payload: { selected, id, callback } }) {
 
     // Add submisson to form
     yield put({ type: ADD_SUBMISSION_REQUEST, payload: { selected, id } });
+
+    // Update socket
+    yield put({ type: UPDATE_RESULT_SOCKET, payload: { selected, id } });
 
     // Route to result page
     callback();
@@ -111,6 +151,7 @@ const pollSagas = [
   takeEvery(SUBMIT_POLL_SUCCESS, updateResults),
   takeEvery(ADD_SUBMISSION_REQUEST, addSubmisson),
   takeEvery(GET_POLL_REQUEST, getPollRequest),
+  takeEvery(UPDATE_RESULT_SOCKET, updateResultSocket),
 ];
 
 export default pollSagas;
