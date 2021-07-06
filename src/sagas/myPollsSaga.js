@@ -2,12 +2,20 @@ import { takeEvery, call, put } from 'redux-saga/effects';
 import I from 'immutable';
 
 import {
+  DELETE_POLL_FAIL,
+  DELETE_POLL_REQUEST,
+  DELETE_POLL_SUCCESS,
   LOG_IN_SUCCESS,
   TAKE_USER_POLLS_FAIL,
   TAKE_USER_POLLS_REQUEST,
   TAKE_USER_POLLS_SUCCESS,
 } from '../constants/actionTypes';
-import { getFormSubmissions, getQuestionsOfForm, getUserForms } from '../lib/api/unsplashService';
+import {
+  deleteForm,
+  getFormSubmissions,
+  getQuestionsOfForm,
+  getUserForms,
+} from '../lib/api/unsplashService';
 
 function* takeUserPolls(action) {
   try {
@@ -16,6 +24,7 @@ function* takeUserPolls(action) {
 
     // Get user's forms
     const { status, data: { content } } = yield call(getUserForms, API_KEY);
+    console.log(content);
 
     if (status !== 200) {
       throw Error('Request failed for forms');
@@ -23,7 +32,7 @@ function* takeUserPolls(action) {
     console.log(content);
     // Extract polls from forms
     const polls = [];
-    content.map(form => (form.title.substring(0, 10) === '__JFPoll__' ? polls.push(form) : null));
+    content.map(form => (form.title.substring(0, 10) === '__JFPoll__' && form.status !== 'DELETED' ? polls.push(form) : null));
     console.log(polls);
     // Get questions for each form
     const newPolls = [];
@@ -87,9 +96,22 @@ function* pollRequest(action) {
   });
 }
 
+function* deletePollReq({ payload }) {
+  try {
+    const key = window.JF.getAPIKey();
+    console.log(key);
+    const res = yield call(deleteForm, key, payload);
+    console.log(res);
+    yield put({ type: DELETE_POLL_SUCCESS, payload });
+  } catch (error) {
+    yield put({ type: DELETE_POLL_FAIL, payload });
+  }
+}
+
 const myPollsSagas = [
   takeEvery(LOG_IN_SUCCESS, pollRequest),
   takeEvery(TAKE_USER_POLLS_REQUEST, takeUserPolls),
+  takeEvery(DELETE_POLL_REQUEST, deletePollReq),
 ];
 
 export default myPollsSagas;

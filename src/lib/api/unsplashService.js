@@ -29,3 +29,7 @@ export const addSubmission = (formID, submission) => {
   const axiosInstance = axios.create({ withCredentials: false });
   return axiosInstance.post(url, toQueryString(submission));
 };
+
+export const deleteForm = (API_KEY, formID) => (
+  axios.delete(`${baseURL}/form/${formID}?apiKey=${API_KEY}`)
+);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { instanceOf, string } from 'prop-types';
+import { func, instanceOf, string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import I from 'immutable';
 
@@ -7,7 +7,7 @@ import '../styles/MyPolls.css';
 import PollInfo from './PollInfo';
 import DetailsModal from './DetailsModal';
 
-const MyPolls = ({ polls, status }) => {
+const MyPolls = ({ polls, status, deletePollRequest }) => {
   console.log(polls);
   const [showModal, setShowModal] = useState(false);
   const [pollId, setPollId] = useState(0);
@@ -28,6 +28,7 @@ const MyPolls = ({ polls, status }) => {
                 showModal={showModal}
                 setShowModal={setShowModal}
                 setPollId={setPollId}
+                deletePollRequest={deletePollRequest}
               />
             ))}
             {showModal ? <DetailsModal poll={polls.find(poll => poll.get('id') === pollId)} setShowModal={setShowModal} /> : null}
@@ -47,11 +48,13 @@ const MyPolls = ({ polls, status }) => {
 MyPolls.propTypes = {
   polls: instanceOf(I.List),
   status: string,
+  deletePollRequest: func,
 };
 
 MyPolls.defaultProps = {
   polls: I.fromJS([]),
   status: string,
+  deletePollRequest: f => f,
 };
 
 export default MyPolls;

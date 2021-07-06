@@ -7,3 +7,5 @@ export * from './loginActions';
 export * from './pollCreateActions';
 
 export * from './pollActions';
+
+export * from './myPollsActions';

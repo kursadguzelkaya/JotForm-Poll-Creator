@@ -3,6 +3,7 @@
 import I from 'immutable';
 import {
   ADD_NEW_POLL,
+  DELETE_POLL_SUCCESS,
   GET_POLL_REQUEST,
   GET_POLL_SUCCESS,
   TAKE_USER_POLLS_REQUEST,
@@ -101,6 +102,9 @@ export default (state = INITIAL_STATE, action) => {
     }
     case GET_POLL_SUCCESS: {
       return state.set('polls', [...state.get('polls', 'fallback'), action.payload]).set('status', 'ready');
+    }
+    case DELETE_POLL_SUCCESS: {
+      return state.set('polls', state.get('polls', 'fallback').filter(poll => poll.get('id') !== action.payload));
     }
     default:
       return state;

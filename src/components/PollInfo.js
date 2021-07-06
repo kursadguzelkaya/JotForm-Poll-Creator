@@ -13,6 +13,7 @@ const PollInfo = ({
   setShowModal,
   showModal,
   setPollId,
+  deletePollRequest,
 }) => {
   console.log('PollInfo');
   return (
@@ -28,6 +29,9 @@ const PollInfo = ({
           <i className="fas fa-info-circle icon" />
           Details
         </button>
+        <button className="btn btn-red" type="button" onClick={() => deletePollRequest(id)}>
+          <i className="fas fa-times-circle icon" />
+        </button>
       </div>
     </div>
   );
@@ -41,6 +45,7 @@ PollInfo.propTypes = {
   showModal: bool,
   setShowModal: func,
   setPollId: func,
+  deletePollRequest: func,
 };
 
 PollInfo.defaultProps = {
@@ -48,6 +53,7 @@ PollInfo.defaultProps = {
   showModal: false,
   setShowModal: f => f,
   setPollId: f => f,
+  deletePollRequest: f => f,
 };
 
 export default PollInfo;
