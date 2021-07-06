@@ -13,6 +13,7 @@ const Poll = ({
   submitPoll,
   updatePoll,
   history,
+  errors,
 }) => {
   const [selected, setSelected] = useState('');
 
@@ -53,6 +54,15 @@ const Poll = ({
             </div>
           </div>
         </div>
+        {errors.size === 0 ? null : (
+          <div className="errors">
+            {errors.map(error => (
+              <div className="error">
+                <p>{error.get('errorMessage', 'error')}</p>
+              </div>
+            ))}
+          </div>
+        )}
         <button id="submit" className="btn" type="button" onClick={submitClick}>
           <i className="far fa-paper-plane icon" />
           Submit
@@ -67,11 +77,13 @@ Poll.propTypes = {
   submitPoll: func,
   updatePoll: func,
   history: instanceOf(I.Map).isRequired,
+  errors: instanceOf(I.Map),
 };
 
 Poll.defaultProps = {
   submitPoll: f => f,
   updatePoll: f => f,
+  errors: I.fromJS({}),
 };
 
 export default Poll;

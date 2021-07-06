@@ -3,6 +3,7 @@ import {
   put,
   select,
   takeEvery,
+  delay,
 } from 'redux-saga/effects';
 
 import {
@@ -10,6 +11,7 @@ import {
   CREATE_POLL_REQUEST,
   CREATE_POLL_SUCCESS,
   CREATE_POLL_FAIL,
+  CLEAR_ERRORS,
 } from '../constants/actionTypes';
 import { getQuestionsOfForm, postUserForm } from '../lib/api/unsplashService';
 import { getAPIKey } from '../selectors';
@@ -18,13 +20,31 @@ function* createPollRequest({ payload: { poll, history } }) {
   console.log('submitted');
   if (poll.get('pollName') === '') {
     console.log('Please fill poll name!!');
-    yield put({ type: CREATE_POLL_FAIL, payload: poll });
+
+    // Create error
+    yield put({ type: CREATE_POLL_FAIL, payload: 'Please fill poll name!!' });
+
+    // Clear errors
+    yield delay(2000);
+    yield put({ type: CLEAR_ERRORS });
   } else if (poll.getIn(['question', 'questionText']) === '') {
     console.log('Please fill question!!');
-    yield put({ type: CREATE_POLL_FAIL, payload: poll });
+
+    // Create error
+    yield put({ type: CREATE_POLL_FAIL, payload: 'Please fill question!!' });
+
+    // Clear errors
+    yield delay(2000);
+    yield put({ type: CLEAR_ERRORS });
   } else if (poll.getIn(['question', 'options']).find(option => option.get('optionText') === '')) {
     console.log('Please fill empty options!!');
-    yield put({ type: CREATE_POLL_FAIL, payload: poll });
+
+    // Create error
+    yield put({ type: CREATE_POLL_FAIL, payload: 'Please fill empty options!!' });
+
+    // Clear errors
+    yield delay(2000);
+    yield put({ type: CLEAR_ERRORS });
   } else {
     yield put({ type: CREATE_POLL_SUCCESS, payload: { poll, history } });
   }

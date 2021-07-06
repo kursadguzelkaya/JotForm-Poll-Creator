@@ -48,8 +48,25 @@
   margin: 10px;
 }
 
+.errors {
+  margin: 0;
+}
+
+.errors .error {
+  color: #fff;
+  background-color: #eb3f3f;
+  width: 40%;
+  padding: 5px;
+  border-radius: 4px;
+  margin: auto;
+}
+
+.errors .error p {
+  margin: 0;
+}
+
 #submit {
-  margin-top: 30px;
+  margin-top: 10px;
   background-color: var(--green);
 }
 

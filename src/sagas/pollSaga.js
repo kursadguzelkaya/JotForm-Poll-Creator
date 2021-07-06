@@ -1,13 +1,14 @@
 import {
   call,
   put,
-  // select,
+  delay,
   takeEvery,
 } from 'redux-saga/effects';
 import I from 'immutable';
 
 import {
   ADD_SUBMISSION_REQUEST,
+  CLEAR_ERRORS,
   GET_POLL_FAIL,
   GET_POLL_REQUEST,
   GET_POLL_SUCCESS,
@@ -33,7 +34,12 @@ function* submitRequest({ payload: { selected, id, callback } }) {
     // Route to result page
     callback();
   } else {
-    yield put({ type: SUBMIT_POLL_FAIL, payload: { selected, id } });
+    // Create error
+    yield put({ type: SUBMIT_POLL_FAIL, payload: 'Please choose an option' });
+
+    // Clear errors
+    yield delay(2000);
+    yield put({ type: CLEAR_ERRORS });
   }
 }
 

@@ -4,11 +4,16 @@ import I from 'immutable';
 
 import '../styles/PollCreate.css';
 
-const PollCreate = ({ createPollRequest, polls, history }) => {
+const PollCreate = ({
+  createPollRequest,
+  polls,
+  history,
+  errors,
+}) => {
   const [pollName, setPollName] = useState('');
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['']);
-
+  console.log(errors);
   const submitPoll = () => {
     const newOptions = options.map(option => ({ optionText: option, votes: 0 }));
     createPollRequest({
@@ -49,6 +54,15 @@ const PollCreate = ({ createPollRequest, polls, history }) => {
             {options.map((value, index) => <input className="input option-input" type="text" placeholder="New option" value={options[index]} onChange={e => updateOptionValue(index, e)} />)}
           </div>
         </div>
+        {errors.size === 0 ? null : (
+          <div className="errors">
+            {errors.map(error => (
+              <div className="error">
+                <p>{error.get('errorMessage', 'error')}</p>
+              </div>
+            ))}
+          </div>
+        )}
         <button id="submit" className="btn" type="button" onClick={() => submitPoll()}>
           <i className="far fa-paper-plane icon" />
           Submit
@@ -62,6 +76,11 @@ PollCreate.propTypes = {
   createPollRequest: func.isRequired,
   polls: instanceOf(I.List).isRequired,
   history: instanceOf(I.Map).isRequired,
+  errors: instanceOf(I.List),
+};
+
+PollCreate.defaultProps = {
+  errors: I.fromJS({}),
 };
 
 export default PollCreate;

@@ -12,6 +12,7 @@ import I from 'immutable';
 import Poll from '../components/Poll';
 import { getPoll, getStatus } from '../selectors';
 import { submitPoll, updatePoll, getPollRequest } from '../actions';
+import { getErrors } from '../selectors/errorSelector';
 
 const PollContainer = ({
   id,
@@ -21,6 +22,7 @@ const PollContainer = ({
   updatePoll,
   getPollRequest,
   history,
+  errors,
 }) => {
   useEffect(() => {
     console.log('PollContainer rendered');
@@ -31,7 +33,13 @@ const PollContainer = ({
   return (
     <div>
       {status !== 'ready' ? (<h1>loading...</h1>) : (
-        <Poll poll={poll} submitPoll={submitPoll} updatePoll={updatePoll} history={history} />
+        <Poll
+          poll={poll}
+          submitPoll={submitPoll}
+          updatePoll={updatePoll}
+          history={history}
+          errors={errors}
+        />
       )}
     </div>
   );
@@ -45,6 +53,7 @@ PollContainer.propTypes = {
   updatePoll: func,
   getPollRequest: func,
   history: instanceOf(I.Map).isRequired,
+  errors: instanceOf(I.List),
 };
 
 PollContainer.defaultProps = {
@@ -53,16 +62,19 @@ PollContainer.defaultProps = {
   submitPoll: f => f,
   updatePoll: f => f,
   getPollRequest: f => f,
+  errors: I.fromJS({}),
 };
 
 const mapStateToProps = (state, ownProps) => {
   const poll = getPoll(state, ownProps.match.params.id);
   const status = getStatus(state);
   const { id } = ownProps.match.params;
+  const errors = getErrors(state);
   return {
     poll,
     id,
     status,
+    errors,
   };
 };
 
