@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { func, instanceOf, string } from 'prop-types';
+import { func, shape, string } from 'prop-types';
 import { Link } from 'react-router-dom';
 import I from 'immutable';
 
 import '../styles/MyPolls.css';
 import PollInfo from './PollInfo';
 import DetailsModal from './DetailsModal';
+import DeleteWarningModal from './DeleteWarningModal';
 
 const MyPolls = ({ polls, status, deletePollRequest }) => {
   console.log(polls);
   const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [pollId, setPollId] = useState(0);
 
   return (
@@ -28,10 +30,20 @@ const MyPolls = ({ polls, status, deletePollRequest }) => {
                 showModal={showModal}
                 setShowModal={setShowModal}
                 setPollId={setPollId}
-                deletePollRequest={deletePollRequest}
+                showDeleteModal={showDeleteModal}
+                setShowDeleteModal={setShowDeleteModal}
               />
             ))}
             {showModal ? <DetailsModal poll={polls.find(poll => poll.get('id') === pollId)} setShowModal={setShowModal} /> : null}
+            {showDeleteModal
+              ? (
+                <DeleteWarningModal
+                  pollId={pollId}
+                  setShowDeleteModal={setShowDeleteModal}
+                  deletePollRequest={deletePollRequest}
+                />
+              )
+              : null}
           </div>
         )}
         <Link to="/createPoll">
@@ -46,7 +58,7 @@ const MyPolls = ({ polls, status, deletePollRequest }) => {
 };
 
 MyPolls.propTypes = {
-  polls: instanceOf(I.List),
+  polls: shape({}),
   status: string,
   deletePollRequest: func,
 };
