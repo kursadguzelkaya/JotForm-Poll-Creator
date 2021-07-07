@@ -10,8 +10,14 @@ const SharePoll = ({ pollName, id }) => {
       <div className="share-container">
         <p>{`Poll Name: ${pollName}`}</p>
         <p>{`Poll Link: http://localhost:3000/poll/${id}`}</p>
-        <button type="button" className="btn">Copy Link</button>
-        <button type="button" className="btn">Share on Whatsapp</button>
+        <button id="copy-btn" type="button" className="btn">
+          <i className="far fa-copy icon" />
+          <span className="none-mobile-600">Copy Link</span>
+        </button>
+        <button id="whatsapp-btn" type="button" className="btn">
+          <i className="fab fa-whatsapp icon" />
+          <span className="none-mobile-600">Share on Whatsapp</span>
+        </button>
       </div>
     </div>
   );

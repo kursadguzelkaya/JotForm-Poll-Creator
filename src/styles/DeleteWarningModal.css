@@ -42,14 +42,26 @@
   z-index: 1000;
 }
 
-@media(max-width: 1200px) {
-  .modal {
-    width: 80%;
+@media(max-width: 900px) {
+  .delete-modal {
+    width: 60%;
+  }
+  .delete-modal .btn-container {
+    justify-content: center;
   }
 }
 
-@media(max-width: 1400px) {
-  .modal {
-    width: 80%;
+@media(max-width: 600px) {
+  .none-mobile-600 {
+    display: none;
   }
+
+  #delete-button-modal .icon{
+    margin: auto;
+  }
+
+  #cancel-button-modal .icon{
+    margin: auto;
+  }
+
 }

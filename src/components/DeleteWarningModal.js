@@ -16,11 +16,11 @@ const DeleteWarningModal = ({ setShowDeleteModal, pollId, deletePollRequest }) =
         <div className="btn-container">
           <button id="cancel-button-modal" type="button" className="btn" onClick={() => setShowDeleteModal(false)}>
             <i className="fas fa-times-circle icon" />
-            Cancel
+            <span className="none-mobile-600">Cancel</span>
           </button>
           <button id="delete-button-modal" type="button" className="btn" onClick={() => { deletePollRequest(pollId); setShowDeleteModal(false); }}>
             <i className="far fa-trash-alt icon" />
-            Delete
+            <span className="none-mobile-600">Delete</span>
           </button>
         </div>
       </div>

@@ -53,3 +53,21 @@
 .poll-info .btn-red .icon {
   margin: auto;
 }
+
+@media(max-width: 900px) {
+  .none-mobile {
+    display: none;
+  }
+
+  #details-btn {
+    padding: 5px 5px;
+  }
+
+  #details-btn .icon{
+    margin: auto;
+  }
+
+  .poll-info {
+    font-size: 14px;
+  }
+}

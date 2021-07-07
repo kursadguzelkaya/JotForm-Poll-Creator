@@ -58,3 +58,11 @@
 #submit {
   background-color: var(--green);
 }
+
+@media(max-width: 900px) {
+
+  .poll {
+    width: 90%;
+  }
+
+}

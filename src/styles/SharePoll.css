@@ -24,3 +24,35 @@
 .share-poll .btn {
   margin: 10px 20px;
 }
+
+#whatsapp-btn {
+  background-color: var(--green);
+}
+
+@media(max-width: 1200px) {
+
+  .share-poll .share-container {
+    width: 60%;
+  }
+
+  .share-poll .share-container p{
+    width: 60%;
+  }
+}
+
+@media(max-width: 900px) {
+
+  .share-poll .share-container {
+    width: 80%;
+  }
+
+  .share-poll .share-container p{
+    width: 80%;
+  }
+}
+
+@media(max-width: 600px) {
+  .share-poll .btn .icon{
+    margin: auto;
+  }
+}

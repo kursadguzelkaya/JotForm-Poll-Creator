@@ -20,18 +20,18 @@ const PollInfo = ({
   return (
     <div className="poll-info">
       <h2>{pollName}</h2>
-      <p className="date">{date}</p>
+      <p className="date none-mobile">{`created at: ${date}`}</p>
       <div className="attandence">
         <p>{votes}</p>
         <i className="fas fa-user icon" />
       </div>
       <div className="btn-container">
-        <button className="btn" type="button" onClick={() => { setShowModal(!showModal); setPollId(id); }}>
+        <button id="details-btn" className="btn" type="button" onClick={() => { setShowModal(!showModal); setPollId(id); }}>
           <i className="fas fa-info-circle icon" />
-          Details
+          <span className="none-mobile">Details</span>
         </button>
         <button className="btn btn-red" type="button" onClick={() => { setShowDeleteModal(!showDeleteModal); setPollId(id); }}>
-          <i className="fas fa-times-circle icon" />
+          <i className="far fa-trash-alt icon" />
         </button>
       </div>
     </div>

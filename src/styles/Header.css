@@ -38,3 +38,10 @@
 .logout {
   flex: 2;
 }
+
+@media(max-width: 1000px) {
+  .none-mobile-1000 {
+    display: none;
+  }
+
+}

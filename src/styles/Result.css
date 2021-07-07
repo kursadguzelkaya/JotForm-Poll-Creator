@@ -16,7 +16,7 @@
   background-color: #d4d8d8;
   border-radius: 20px;
   height: 30px;
-  width: 300px;
+  width: 100%;
   flex: 5;
 }
 
@@ -42,4 +42,15 @@
   margin-top: 20px;
   position: absolute;
   right: 50px;
+}
+
+@media(max-width: 800px) {
+
+  .option {
+    display: block;
+  }
+
+  .options {
+    align-items: center;
+  }
 }

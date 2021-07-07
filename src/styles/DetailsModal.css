@@ -14,12 +14,11 @@
 }
 
 .modal .btn-container {
-  position: relative;
-  padding: 40px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 #close-modal {
-  position: absolute;
   right: 20px;
 }
 
@@ -37,10 +36,28 @@
   .modal {
     width: 80%;
   }
+
+  .poll-questions {
+    margin: auto;
+    width: 90%;
+  }
+
+  .poll-questions .question {
+    width: 80%;
+    margin: auto;
+  }
 }
 
 @media(max-width: 1400px) {
   .modal {
     width: 80%;
+  }
+}
+
+@media(max-width: 800px) {
+
+  .modal .btn-container {
+    display: flex;
+    justify-content: center;
   }
 }

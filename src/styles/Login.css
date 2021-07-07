@@ -22,3 +22,20 @@
   margin: 70px auto;
   color: black;
 }
+
+
+@media(max-width: 800px) {
+  .login-btn-container {
+    width: 60%;
+    margin: 100px auto;
+  }
+  
+}
+
+@media(max-width: 600px) {
+  .login-btn-container {
+    width: 80%;
+    margin: 100px auto;
+  }
+  
+}
