@@ -2,6 +2,7 @@ import React from 'react';
 import {
   bool, func, number, string,
 } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import '../styles/PollInfo.css';
 
@@ -26,6 +27,11 @@ const PollInfo = ({
         <i className="fas fa-user icon" />
       </div>
       <div className="btn-container">
+        <Link to={`/share/${id}`}>
+          <button className="btn btn-share" type="button">
+            <i className="fas fa-share icon" />
+          </button>
+        </Link>
         <button id="details-btn" className="btn" type="button" onClick={() => { setShowModal(!showModal); setPollId(id); }}>
           <i className="fas fa-info-circle icon" />
           <span className="none-mobile">Details</span>

@@ -50,6 +50,20 @@
   font-size: 16px;
 }
 
+.poll-info .btn-share {
+  margin-left: 10px;
+  background-color: var(--darkBlue);
+  color: #fff;
+  padding: 7px 7px;
+  border: none;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.poll-info .btn-share .icon{ 
+  margin: auto;
+}
+
 .poll-info .btn-red .icon {
   margin: auto;
 }
