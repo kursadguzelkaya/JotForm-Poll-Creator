@@ -4,10 +4,8 @@ import {
   delay,
   takeEvery,
   select,
-  take,
 } from 'redux-saga/effects';
 import I from 'immutable';
-import { eventChannel } from 'redux-saga';
 
 import {
   ADD_SUBMISSION_REQUEST,
@@ -30,33 +28,13 @@ import {
 import { API_KEY } from '../constants/adminKey';
 import { getSocket } from '../selectors';
 
-function subscribeToSocket(socket, id) {
-  return eventChannel(emit => {
-    const updatePollResults = data => {
-      console.log(data);
-      emit({ type: UPDATE_POLL_RESULT, payload: { selected: data, id } });
-    };
-    console.log('heree');
-    socket.on('update-result', updatePollResults);
-
-    return () => {};
-  });
-}
-
 function* updateResultSocket({ payload: { selected, id } }) {
   console.log('socket is updtatedd');
   // Get socket from store
   const socket = yield select(getSocket);
 
   // Create submit-poll event on socket
-  socket.emit('submit-poll', selected);
-
-  const channelToSubscribe = subscribeToSocket(socket, id);
-
-  while (true) {
-    const channelledAction = yield take(channelToSubscribe);
-    yield put(channelledAction);
-  }
+  socket.emit('submit-poll', { selected, id });
 }
 
 function* submitRequest({ payload: { selected, id, callback } }) {
