@@ -18,6 +18,8 @@
   height: 30px;
   width: 100%;
   flex: 5;
+  display: flex;
+  align-items: center;
 }
 
 .progress-done {
@@ -31,6 +33,9 @@
   height: 100%;
   width: 100px;
   transition: 1s ease;
+}
+.percantage {
+  margin-left: 5px;
 }
 
 .btn-container {

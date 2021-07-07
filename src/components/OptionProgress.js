@@ -12,8 +12,13 @@ const OptionProgress = ({ optionText, optionResult }) => {
       <p>{optionText}</p>
       <div className="progress">
         <div className="progress-done" data_done={optionResult} style={{ width: `${optionResult}%`, opacity: '1' }}>
-          {`${optionResult}%`}
+          {optionResult > 15 ? `${optionResult}%` : null}
         </div>
+        <span className="percantage">
+          {' '}
+          {optionResult <= 15 ? `${optionResult}%` : null}
+          {' '}
+        </span>
       </div>
     </div>
   );
