@@ -1,4 +1,9 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import {
+  takeEvery,
+  call,
+  put,
+  all,
+} from 'redux-saga/effects';
 import I from 'immutable';
 
 import {
@@ -33,6 +38,16 @@ function* takeUserPolls(action) {
     content.map(form => (form.title.substring(0, 10) === '__JFPoll__' && form.status !== 'DELETED' ? polls.push(form) : null));
     // Get questions for each form
     const newPolls = [];
+
+    // const x = yield all(polls.map(({ id }) => {
+    //   return [
+    //     call(getQuestionsOfForm, API_KEY, id),
+    //     call(getFormSubmissions, API_KEY, id),
+    //   ];
+    // }).flat());
+
+    // console.log(x);
+
     for (let i = 0; i < polls.length; i += 1) {
       const {
         id,
@@ -43,11 +58,17 @@ function* takeUserPolls(action) {
       } = polls[i];
       const pollName = title.substring(11, title.length - 1);
 
-      // Get questions
-      const { data } = yield call(getQuestionsOfForm, API_KEY, id);
+      // Get questions & submissions
+      const [
+        questionsResponse,
+        submissions,
+      ] = yield all([
+        call(getQuestionsOfForm, API_KEY, id),
+        call(getFormSubmissions, API_KEY, id),
+      ]);
 
-      // Get submissons
-      const res = yield call(getFormSubmissions, API_KEY, id);
+      const { data } = questionsResponse;
+      const res = submissions;
 
       // Update votes with submissons
       const options = data.content['3'].options.split('|').map(option => {
