@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import '../styles/Header.css';
 
 const Header = ({ status, logOut }) => {
-  console.log('Header');
+  console.log();
   return (
     <div className="header">
       <div className="app-info">
-        <img src="https://www.jotform.com/tr/resources/assets/logo/jotform-icon-white-560x560.jpg" width="50px" height="50px" alt="app-icon" />
+        <img src="/img/jf.webp" width="50px" height="50px" alt="app-icon" />
         <h1 className="none-mobile-1000">JotForm Polls</h1>
       </div>
       { status === 'authenticated' ? (
