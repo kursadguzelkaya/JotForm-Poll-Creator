@@ -7,7 +7,6 @@ import '../styles/Result.css';
 import QuestionResult from './QuestionResult';
 
 const Result = ({ poll }) => {
-  console.log('Result');
   return (
     <div className="poll-comp">
       <div className="poll">

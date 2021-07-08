@@ -4,8 +4,6 @@ import ReactDom from 'react-dom';
 import '../styles/DeleteWarningModal.css';
 
 const DeleteWarningModal = ({ setShowDeleteModal, pollId, deletePollRequest }) => {
-  console.log('delete');
-  console.log(pollId);
   return ReactDom.createPortal(
     <>
       <div className="overlay">{}</div>

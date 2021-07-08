@@ -10,21 +10,19 @@ import {
   LOG_IN_SUCCESS,
 } from '../constants/actionTypes';
 
-function* logInRequest({ payload: history }) {
-  yield console.log('logIn saga called', history);
+function logInRequest({ payload: history }) {
   try {
     window.JF.login(
       function success() {
-        console.log('Logged in successfully');
         history.push('/authRedirect');
       },
 
       function error() {
-        console.log('Could not authorize user');
       },
     );
   } catch (error) {
-    console.log('Eror catched!');
+    // eslint-disable-next-line no-console
+    console.error('Eror catched!', error.message);
   }
 }
 

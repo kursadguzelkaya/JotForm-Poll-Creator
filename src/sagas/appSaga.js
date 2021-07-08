@@ -7,10 +7,8 @@ import { INIT_APP, INIT_SOCKET, UPDATE_POLL_RESULT } from '../constants/actionTy
 function subscribeToSocket(socket) {
   return eventChannel(emit => {
     const updatePollResults = data => {
-      console.log(data);
       emit({ type: UPDATE_POLL_RESULT, payload: { selected: data.selected, id: data.id } });
     };
-    console.log('heree');
     socket.on('update-result', updatePollResults);
 
     return () => {};
@@ -18,13 +16,13 @@ function subscribeToSocket(socket) {
 }
 
 function* initApp() {
-  // eslint-disable-next-line no-console
-  window.JF.initialize({ accessType: 'full', appName: 'JotForm Polls' });
-  console.log('initApp saga called');
+  window.JF.initialize({
+    accessType: 'full',
+    appName: 'JotForm Polls',
+  });
 
   // Create socket
   const socket = io('http://localhost:4000');
-  console.log(socket);
 
   // Save socket to store
   yield put({ type: INIT_SOCKET, payload: socket });

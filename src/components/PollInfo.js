@@ -17,7 +17,6 @@ const PollInfo = ({
   setShowDeleteModal,
   showDeleteModal,
 }) => {
-  console.log('PollInfo');
   return (
     <div className="poll-info">
       <h2>{pollName}</h2>

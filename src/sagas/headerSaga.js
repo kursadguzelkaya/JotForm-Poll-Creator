@@ -3,7 +3,6 @@ import { LOG_OUT } from '../constants/actionTypes';
 
 function* logOut() {
   // eslint-disable-next-line no-console
-  console.log('logOut saga called');
   yield;
 }
 

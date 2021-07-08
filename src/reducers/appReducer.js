@@ -10,9 +10,7 @@ const INITIAL_STATE = I.fromJS({
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case INIT_SOCKET: {
-      console.log(action.payload);
       if (state.get('socketStatus') !== 'connected' && action.payload) {
-        console.log(state.get('socketStatus'));
         return state.set('socket', action.payload).set('socketStatus', 'connected');
       }
       return state;

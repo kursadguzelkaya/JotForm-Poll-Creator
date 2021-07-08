@@ -9,6 +9,7 @@ module.exports = {
   ],
   rules: {
     'arrow-parens': ['error', 'as-needed'],
+    'arrow-body-style': 'off',
     'react/jsx-filename-extension': [
       1,
       {

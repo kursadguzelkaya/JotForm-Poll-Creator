@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import '../styles/Header.css';
 
 const Header = ({ status, logOut }) => {
-  console.log();
   return (
     <div className="header">
       <div className="app-info">

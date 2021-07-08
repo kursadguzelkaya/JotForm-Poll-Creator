@@ -24,16 +24,13 @@ function* takeUserPolls(action) {
 
     // Get user's forms
     const { status, data: { content } } = yield call(getUserForms, API_KEY);
-    console.log(content);
 
     if (status !== 200) {
       throw Error('Request failed for forms');
     }
-    console.log(content);
     // Extract polls from forms
     const polls = [];
     content.map(form => (form.title.substring(0, 10) === '__JFPoll__' && form.status !== 'DELETED' ? polls.push(form) : null));
-    console.log(polls);
     // Get questions for each form
     const newPolls = [];
     for (let i = 0; i < polls.length; i += 1) {
@@ -48,7 +45,6 @@ function* takeUserPolls(action) {
 
       // Get questions
       const { data } = yield call(getQuestionsOfForm, API_KEY, id);
-      console.log(data);
 
       // Get submissons
       const res = yield call(getFormSubmissions, API_KEY, id);
@@ -81,7 +77,6 @@ function* takeUserPolls(action) {
       payload: newPolls,
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: TAKE_USER_POLLS_FAIL,
       payload: error.message,
@@ -99,9 +94,7 @@ function* pollRequest(action) {
 function* deletePollReq({ payload }) {
   try {
     const key = window.JF.getAPIKey();
-    console.log(key);
-    const res = yield call(deleteForm, key, payload);
-    console.log(res);
+    yield call(deleteForm, key, payload);
     yield put({ type: DELETE_POLL_SUCCESS, payload });
   } catch (error) {
     yield put({ type: DELETE_POLL_FAIL, payload });

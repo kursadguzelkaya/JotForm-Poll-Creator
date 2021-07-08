@@ -10,7 +10,6 @@ import DeleteWarningModal from './DeleteWarningModal';
 import Loading from './Loading';
 
 const MyPolls = ({ polls, status, deletePollRequest }) => {
-  console.log(polls);
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [pollId, setPollId] = useState(0);

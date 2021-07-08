@@ -29,7 +29,6 @@ import { API_KEY } from '../constants/adminKey';
 import { getSocket } from '../selectors';
 
 function* updateResultSocket({ payload: { selected, id } }) {
-  console.log('socket is updtatedd');
   // Get socket from store
   const socket = yield select(getSocket);
 
@@ -38,7 +37,6 @@ function* updateResultSocket({ payload: { selected, id } }) {
 }
 
 function* submitRequest({ payload: { selected, id, callback } }) {
-  console.log('submitted');
   if (selected !== '') {
     // Update poll result on redux store
     yield put({ type: SUBMIT_POLL_SUCCESS, payload: { selected, id } });
@@ -71,8 +69,7 @@ function* addSubmisson({ payload: { selected, id } }) {
   const submission = {
     q3_questionId: selected,
   };
-  const res = yield call(addSubmission, id, submission);
-  console.log(res);
+  yield call(addSubmission, id, submission);
 }
 
 function* getPollRequest({ payload }) {
@@ -116,11 +113,8 @@ function* getPollRequest({ payload }) {
     });
 
     yield put({ type: GET_POLL_SUCCESS, payload: newPoll });
-
-    console.log(newPoll);
   } catch (error) {
     yield put({ type: GET_POLL_FAIL, payload: error.message });
-    console.log(error);
   }
 }
 

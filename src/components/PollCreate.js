@@ -13,7 +13,6 @@ const PollCreate = ({
   const [pollName, setPollName] = useState('');
   const [question, setQuestion] = useState('');
   const [options, setOptions] = useState(['']);
-  console.log(errors);
   const submitPoll = () => {
     const newOptions = options.map(option => ({ optionText: option, votes: 0 }));
     createPollRequest({

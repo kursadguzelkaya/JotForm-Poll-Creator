@@ -7,7 +7,6 @@ import '../styles/DetailsModal.css';
 import QuestionResult from './QuestionResult';
 
 const DetailsModal = ({ poll, setShowModal }) => {
-  console.log('Result');
   return ReactDom.createPortal(
     <>
       <div className="overlay">{}</div>

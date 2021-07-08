@@ -17,10 +17,7 @@ import { getQuestionsOfForm, postUserForm } from '../lib/api/unsplashService';
 import { getAPIKey } from '../selectors';
 
 function* createPollRequest({ payload: { poll, history } }) {
-  console.log('submitted');
   if (poll.get('pollName') === '') {
-    console.log('Please fill poll name!!');
-
     // Create error
     yield put({ type: CREATE_POLL_FAIL, payload: 'Please fill poll name!!' });
 
@@ -28,8 +25,6 @@ function* createPollRequest({ payload: { poll, history } }) {
     yield delay(2000);
     yield put({ type: CLEAR_ERRORS });
   } else if (poll.getIn(['question', 'questionText']) === '') {
-    console.log('Please fill question!!');
-
     // Create error
     yield put({ type: CREATE_POLL_FAIL, payload: 'Please fill question!!' });
 
@@ -37,8 +32,6 @@ function* createPollRequest({ payload: { poll, history } }) {
     yield delay(2000);
     yield put({ type: CLEAR_ERRORS });
   } else if (poll.getIn(['question', 'options']).find(option => option.get('optionText') === '')) {
-    console.log('Please fill empty options!!');
-
     // Create error
     yield put({ type: CREATE_POLL_FAIL, payload: 'Please fill empty options!!' });
 
@@ -108,13 +101,13 @@ function* addNewPoll({ payload: { poll, history } }) {
     // Add poll to redux store
     yield put({ type: ADD_NEW_POLL, payload: poll.set('id', content.id) });
 
-    const { data } = yield call(getQuestionsOfForm, API_KEY, content.id);
-    console.log(data);
+    yield call(getQuestionsOfForm, API_KEY, content.id);
 
     // Change route
     history.push(`/share/${content.id}`);
   } catch (error) {
-    console.log(error);
+    // eslint-disable-next-line no-console
+    console.error('Error', error.message);
   }
 }
 

@@ -6,7 +6,6 @@ import React from 'react';
 import '../styles/Result.css';
 
 const OptionProgress = ({ optionText, optionResult }) => {
-  console.log('OptionProgress');
   return (
     <div className="option">
       <p>{optionText}</p>

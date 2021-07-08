@@ -1498,7 +1498,6 @@ var JF = (function(base) {
 
         XD.receiveMessage(function(message){
 
-            console.log('message arrived to page: ', message);
             //parse message
             var msg = message.data;
 
@@ -1609,7 +1608,6 @@ var JF = (function(base) {
         try {
             dimmer.style.background = "rgba(0,0,0,0.7)";
         } catch (e) {
-            console.log("IE8 Error: rgba is not valid for prehistoric browsers");
         }
 
         wrapperDiv.setAttribute("id", "jotform_oauth_frame_wrapper");
@@ -1628,7 +1626,6 @@ var JF = (function(base) {
         try {
             closeButton.style.backgroundColor = "transparent";
         } catch (e) {
-            console.log("IE8 Error: rgba is not valid for prehistoric browsers");
         }
         closeButton.style.color = "white";
         closeButton.style.fontSize = "14px";
