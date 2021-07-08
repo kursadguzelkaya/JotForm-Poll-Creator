@@ -4,13 +4,13 @@ import { string } from 'prop-types';
 import '../styles/SharePoll.css';
 
 const SharePoll = ({ pollName, id }) => {
-  const [copied] = useState(false);
+  const [copied, setCopied] = useState(false);
   return (
     <div className="share-poll">
       <div className="share-container">
         <p className="share">{`Poll Name: ${pollName}`}</p>
         <p className="share">{`Poll Link: http://localhost:3000/poll/${id}`}</p>
-        <button id="copy-btn" type="button" className="btn">
+        <button id="copy-btn" type="button" className="btn" onClick={() => { navigator.clipboard.writeText(`http://localhost:3000/poll/${id}`); setCopied(true); }}>
           <i className="far fa-copy icon" />
           <span className="none-mobile-600">Copy Link</span>
         </button>
