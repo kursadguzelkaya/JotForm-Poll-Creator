@@ -22,7 +22,7 @@ const PollInfo = ({
     <div className="poll-info">
       <h2>{pollName}</h2>
       <p className="date none-mobile">{`created at: ${date}`}</p>
-      <div className="attandence">
+      <div className="attandence none-mobile-450">
         <p>{votes}</p>
         <i className="fas fa-user icon" />
       </div>

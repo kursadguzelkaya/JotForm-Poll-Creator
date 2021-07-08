@@ -47,3 +47,17 @@
   }
 
 }
+
+@media(max-width: 500px) {
+  .none-mobile-500 {
+    display: none;
+  }
+
+  .logout-btn {
+    padding: 7px 10px;
+  }
+
+  .logout .icon {
+    margin: auto;
+  }
+}

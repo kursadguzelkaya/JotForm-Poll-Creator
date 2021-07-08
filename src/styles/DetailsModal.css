@@ -42,9 +42,7 @@
 }
 
 @media(max-width: 1200px) {
-  .modal {
-    width: 80%;
-  }
+ 
 
   .poll-questions {
     margin: auto;
@@ -68,5 +66,29 @@
   .modal .btn-container {
     display: flex;
     justify-content: center;
+  }
+
+   .modal {
+    width: 90%;
+  }
+}
+
+@media(max-width: 800px) {
+  .modal {
+    padding-left: 0;
+  }
+
+  .modal .poll-questions {
+    width: 100%;
+    padding-left: 0;
+
+  }
+
+  .modal .question {
+    width: 90%;
+  }
+
+   .modal {
+    width: 90%;
   }
 }

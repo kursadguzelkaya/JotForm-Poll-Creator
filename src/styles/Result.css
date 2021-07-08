@@ -40,13 +40,14 @@
 
 .btn-container {
   width: 90%;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #create-own-poll {
   margin-top: 20px;
-  position: absolute;
-  right: 50px;
+
 }
 
 @media(max-width: 800px) {

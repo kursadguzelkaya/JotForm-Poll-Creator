@@ -65,4 +65,8 @@
     margin: auto;
   }
 
+  .delete-modal {
+    width: 80%;
+  }
+
 }

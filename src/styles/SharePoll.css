@@ -70,4 +70,18 @@
   .share-poll .btn .icon{
     margin: auto;
   }
+
+  .share-poll {
+    padding: 20px 0;
+  }
+
+  .share-poll .share-container {
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 0px;
+  } 
+
+  .share-poll .share-container .share{
+    width: 93%;
+  } 
 }

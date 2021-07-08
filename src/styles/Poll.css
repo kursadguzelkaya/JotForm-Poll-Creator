@@ -69,3 +69,24 @@
   }
 
 }
+
+@media(max-width: 500px) {
+  .poll-comp {
+    padding-left: 0;
+  }
+  .poll {
+    width: 100%;
+  }
+
+  .poll-comp .poll-questions {
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+
+  .poll-comp .question{
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}

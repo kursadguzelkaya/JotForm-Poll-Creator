@@ -25,7 +25,7 @@ const Header = ({ status, logOut }) => {
             <Link to="/">
               <button className="btn logout-btn" type="button" onClick={logOut}>
                 <i className="fas fa-sign-out-alt icon" />
-                Sign Out
+                <span className="none-mobile-500">Sign Out</span>
               </button>
             </Link>
           </div>

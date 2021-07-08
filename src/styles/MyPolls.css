@@ -25,11 +25,23 @@
   margin-left: 20px;
 }
 
-@media(max-width: 1200px) {
+@media(max-width: 1400px) {
   .my-polls .polls {
-    background-color: #fff;
     margin: 20px auto;
     width: 90%;
     padding: 20px;
+  }
+}
+
+@media(max-width: 600px) {
+  .my-polls {
+    padding: 10px 0px 0px 0px;
+  }
+  .my-polls .polls {
+    width: 100%;
+    padding: 5px;
+  }
+  #create-new-poll-btn {
+    margin-bottom: 20px;
   }
 }

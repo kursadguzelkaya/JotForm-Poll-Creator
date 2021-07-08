@@ -10,6 +10,7 @@
 
 .poll-info h2 {
   flex: 1;
+  text-align: left;
 }
 
 .poll-info .date {
@@ -69,7 +70,7 @@
   margin: auto;
 }
 
-@media(max-width: 900px) {
+@media(max-width: 1100px) {
   .none-mobile {
     display: none;
   }
@@ -84,5 +85,19 @@
 
   .poll-info {
     font-size: 14px;
+  }
+  .none-mobile-450 {
+    display: none;
+  }
+}
+
+@media(max-width: 450px) {
+  .none-mobile-450 {
+    display: none;
+    background-color: aqua;
+  }
+
+  .poll-info .attandence {
+    display: none;
   }
 }
