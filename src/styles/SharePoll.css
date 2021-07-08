@@ -10,15 +10,18 @@
   margin: 100px auto;
   padding: 20px;
   border-radius: 4px;
+  box-shadow: 0px 30px 20px rgba(0, 0, 0, 0.2);
+
 }
 
 .share-poll .share-container .share{
-  background-color: var(--lightBlue);
-  border: var(--darkBlue) solid 2px;
+  text-align: left;
+  background-color: var(--blue);
   border-radius: 4px;
   width: 50%;
   margin: 20px auto;
   padding: 10px;
+  box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.13);
 }
 
 .share-poll .btn {
@@ -30,13 +33,13 @@
 }
 
 .copied-success p{
-  background-color: rgb(45, 175, 45);
-  color: #fff;
+  background-color: #a7a7a7;
+  color: #000;
   border: none;
   border-radius: 4px;
   box-shadow: 2px;
   margin: auto;
-  padding: 2px;
+  padding: 4px;
   width: 60%;
   box-sizing: border-box;
 }

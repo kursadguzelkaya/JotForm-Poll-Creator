@@ -7,6 +7,10 @@ const Login = ({ logInRequest, history }) => {
   console.log('Login', history);
   return (
     <div className="login">
+      <div className="info">
+        <h1> Easy, Quick, Simple</h1>
+        <h2> Start creating polls with JotForm Polls</h2>
+      </div>
       <div className="login-btn-container">
         <button type="button" onClick={() => logInRequest(history)} className="btn">
           <i className="fas fa-sign-in-alt icon" />

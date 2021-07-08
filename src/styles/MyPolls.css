@@ -11,6 +11,9 @@
   margin: 50px auto;
   width: 70%;
   padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 30px 20px rgba(0, 0, 0, 0.2);
+
 }
 
 .my-polls .polls .poll-infos {

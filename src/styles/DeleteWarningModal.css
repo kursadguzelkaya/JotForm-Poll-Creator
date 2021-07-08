@@ -13,13 +13,14 @@
 
 .delete-modal .warning{
   text-align: center;
+  font-size: 18px;
 }
 
 .delete-modal .btn-container {
   display: flex;
   /* position: relative; */
   padding: 10px;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 #delete-button-modal {

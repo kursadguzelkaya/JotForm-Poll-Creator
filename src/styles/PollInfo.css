@@ -1,9 +1,10 @@
 .poll-info {
-  background-color: var(--lightBlue);
+  background-color: var(--blue);
   display: flex;
   padding: 5px 10px;
   align-items: center;
   margin:0px 20px 20px 20px;
+  box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.13);
   
 }
 

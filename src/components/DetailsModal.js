@@ -14,7 +14,7 @@ const DetailsModal = ({ poll, setShowModal }) => {
       <div className="modal">
         <h1>{poll.get('pollName')}</h1>
         <div className="poll-questions">
-          <QuestionResult question={poll.get('question')} totalVotes={poll.get('votes')} />
+          <QuestionResult className="question-result" question={poll.get('question')} totalVotes={poll.get('votes')} />
         </div>
         <div className="btn-container">
           <button id="close-modal" type="button" className="btn" onClick={() => setShowModal(false)}>

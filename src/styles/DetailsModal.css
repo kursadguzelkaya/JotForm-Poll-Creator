@@ -7,6 +7,7 @@
   z-index: 1000;
   background-color: #fff;
   padding: 10px 10px 20px 10px;
+  border-radius: 10px;
 }
 
 .modal h1{
@@ -18,7 +19,15 @@
   justify-content: flex-end;
 }
 
+.modal .question {
+  background-color: var(--blue);
+  border-radius: 5px;
+  box-shadow: 0px 30px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
 #close-modal {
+  margin-top: 15px;
   right: 20px;
 }
 

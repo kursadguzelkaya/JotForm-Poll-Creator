@@ -5,11 +5,17 @@
   padding: 50px;
 }
 
+.info h1{
+  font-size: 50px;
+}
+
+.info h2{
+  font-size: 30px;
+}
+
 .login-btn-container {
-  background-color: #fff;
   width: 40%;
-  height: 200px;
-  margin: 200px auto;
+  margin: auto;
   border-radius: 5px;
 }
 
@@ -17,10 +23,10 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: var(--orange);
+  background-color: black;
   font-size: 16px;
   margin: 70px auto;
-  color: black;
+  color: #fff;
 }
 
 

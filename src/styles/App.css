@@ -1,9 +1,9 @@
 :root {
-  --orange: #F3C19D;
-  --blue: #c3cfc9;
-  --lightBlue: #dfe6ed;
+  --orange: #fff;
+  --blue: #f3f3f3;
+  --lightBlue: #fff;
   --darkBlue:#6558f5;
-  --green:#1aae9f;
+  --green:#25D366;
 }
 
 .btn {
