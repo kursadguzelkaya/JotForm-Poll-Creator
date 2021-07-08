@@ -50,6 +50,10 @@
   margin: 10px;
 }
 
+.plus-btn .icon {
+  fill: #fff;
+}
+
 .errors {
   margin: 0;
 }

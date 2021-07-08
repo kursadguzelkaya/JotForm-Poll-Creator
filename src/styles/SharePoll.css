@@ -32,6 +32,10 @@
   background-color: var(--green);
 }
 
+.icon {
+  width: 15px;
+}
+
 .copied-success p{
   background-color: #a7a7a7;
   color: #000;

@@ -78,6 +78,10 @@
   margin: 20px;
 }
 
+#submit .icon{
+  color: #fff;
+}
+
 @media(max-width: 900px) {
 
   .poll {

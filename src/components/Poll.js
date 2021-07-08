@@ -62,7 +62,9 @@ const Poll = ({
           </div>
         )}
         <button id="submit" className="btn" type="button" onClick={submitClick}>
-          <i className="far fa-paper-plane icon" />
+          <svg className="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 15 15" width="15" height="15">
+            <path fill="currentColor" d="M14.66 7.33a.5.5 0 00-.27-.44L1.36.2a.5.5 0 00-.7.57L2.1 6.3l5.72 1.04L2.1 8.38.65 13.9a.5.5 0 00.71.57l13.03-6.7a.5.5 0 00.27-.44z" />
+          </svg>
           Submit
         </button>
       </div>
