@@ -13,7 +13,7 @@ Auth.propTypes = {
 };
 
 export default connect(
-  () => {},
+  () => ({}),
   {
     initAuth: history => ({
       type: 'init auth',

@@ -9,7 +9,7 @@ const Header = ({ status, logOut }) => {
   return (
     <div className="header">
       <div className="app-info">
-        <img src="/img/jf.webp" width="50px" height="50px" alt="app-icon" />
+        <img src="/img/jf.webp" width="50" height="50" alt="app-icon" />
         <h1 className="none-mobile-1000">JotForm Polls</h1>
       </div>
       { status === 'authenticated' ? (

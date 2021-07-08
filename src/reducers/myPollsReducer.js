@@ -14,51 +14,51 @@ import {
 const INITIAL_STATE = I.fromJS({
   status: '',
   polls: [
-    {
-      id: 1,
-      pollName: 'Best Movie',
-      date: '06.06.21',
-      votes: 100,
-      status: 'finished',
-      question: {
-        questionText: 'Choose the best movie for you ',
-        options: [
-          { optionText: 'Breaking Bad', votes: 50 },
-          { optionText: 'Prison Break', votes: 30 },
-          { optionText: 'Game of Thrones', votes: 20 },
-        ],
-      },
-    },
-    {
-      id: 2,
-      pollName: 'Personal Info',
-      date: '12.12.21',
-      votes: 150,
-      status: 'finished',
-      question: {
-        questionText: 'Choose the best movie for you ',
-        options: [
-          { optionText: 'Breaking Bad', votes: 70 },
-          { optionText: 'Prison Break', votes: 70 },
-          { optionText: 'Game of Thrones', votes: 10 },
-        ],
-      },
-    },
-    {
-      id: 3,
-      pollName: 'Education Level',
-      date: '09.08.21',
-      votes: 70,
-      status: 'finished',
-      question: {
-        questionText: 'Choose the best movie for you ',
-        options: [
-          { optionText: 'Breaking Bad', votes: 10 },
-          { optionText: 'Prison Break', votes: 40 },
-          { optionText: 'Game of Thrones', votes: 20 },
-        ],
-      },
-    },
+    // {
+    //   id: 1,
+    //   pollName: 'Best Movie',
+    //   date: '06.06.21',
+    //   votes: 100,
+    //   status: 'finished',
+    //   question: {
+    //     questionText: 'Choose the best movie for you ',
+    //     options: [
+    //       { optionText: 'Breaking Bad', votes: 50 },
+    //       { optionText: 'Prison Break', votes: 30 },
+    //       { optionText: 'Game of Thrones', votes: 20 },
+    //     ],
+    //   },
+    // },
+    // {
+    //   id: 2,
+    //   pollName: 'Personal Info',
+    //   date: '12.12.21',
+    //   votes: 150,
+    //   status: 'finished',
+    //   question: {
+    //     questionText: 'Choose the best movie for you ',
+    //     options: [
+    //       { optionText: 'Breaking Bad', votes: 70 },
+    //       { optionText: 'Prison Break', votes: 70 },
+    //       { optionText: 'Game of Thrones', votes: 10 },
+    //     ],
+    //   },
+    // },
+    // {
+    //   id: 3,
+    //   pollName: 'Education Level',
+    //   date: '09.08.21',
+    //   votes: 70,
+    //   status: 'finished',
+    //   question: {
+    //     questionText: 'Choose the best movie for you ',
+    //     options: [
+    //       { optionText: 'Breaking Bad', votes: 10 },
+    //       { optionText: 'Prison Break', votes: 40 },
+    //       { optionText: 'Game of Thrones', votes: 20 },
+    //     ],
+    //   },
+    // },
   ],
 });
 

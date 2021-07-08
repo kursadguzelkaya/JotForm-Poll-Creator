@@ -11,7 +11,6 @@ const Poll = ({
   errors,
 }) => {
   const [selected, setSelected] = useState('');
-
   const submitClick = () => {
     submitPoll({
       selected,
@@ -19,6 +18,8 @@ const Poll = ({
       callback: () => history.push(`/result/${poll.get('id')}`),
     });
   };
+
+  const options = poll.getIn(['question', 'options']).toJS();
 
   return (
     <div className="poll-comp">
@@ -30,13 +31,21 @@ const Poll = ({
               {poll.getIn(['question', 'questionText'], 'fallback')}
             </h2>
             <div className="radio-buttons-wrapper">
-              {poll.getIn(['question', 'options']).map((option, index) => {
+              {options.map((option, index) => {
                 const optionId = `option${index.toString()}`;
+
                 return (
-                  <label key={option} htmlFor={optionId} className="radio">
-                    <input type="radio" className="radio-input" name="radioButtonTest" value="1" id={optionId} onChange={() => setSelected(option.get('optionText'))} />
-                    <div className="radio-radio">{}</div>
-                    {option.get('optionText')}
+                  <label key={optionId} htmlFor={optionId} className="radio">
+                    <input
+                      type="radio"
+                      className="radio-input"
+                      name="radioButtonTest"
+                      value="1"
+                      id={optionId}
+                      onChange={() => setSelected(option.optionText)}
+                    />
+                    <div className="radio-radio" />
+                    {option.optionText}
                   </label>
                 );
               })}
