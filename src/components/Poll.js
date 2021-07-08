@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import I from 'immutable';
 
 import '../styles/Poll.css';
+import { ReactComponent as SubmitIcon } from '../assets/icons/airplane.svg';
 
 const Poll = ({
   poll,
@@ -62,9 +63,7 @@ const Poll = ({
           </div>
         )}
         <button id="submit" className="btn" type="button" onClick={submitClick}>
-          <svg className="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 15 15" width="15" height="15">
-            <path fill="currentColor" d="M14.66 7.33a.5.5 0 00-.27-.44L1.36.2a.5.5 0 00-.7.57L2.1 6.3l5.72 1.04L2.1 8.38.65 13.9a.5.5 0 00.71.57l13.03-6.7a.5.5 0 00.27-.44z" />
-          </svg>
+          <SubmitIcon className="icon" />
           Submit
         </button>
       </div>

@@ -3,6 +3,8 @@ import { func, instanceOf } from 'prop-types';
 import I from 'immutable';
 
 import '../styles/PollCreate.css';
+import { ReactComponent as PlusIcon } from '../assets/icons/plus-circle-solid.svg';
+import { ReactComponent as SubmitIcon } from '../assets/icons/airplane.svg';
 
 const PollCreate = ({
   createPollRequest,
@@ -47,9 +49,7 @@ const PollCreate = ({
           <div className="question">
             <input className="input question-input" type="text" placeholder="Ask a question..." value={question} onChange={e => setQuestion(e.target.value)} />
             <button className="btn plus-btn" type="button" onClick={() => setOptions([...options, ''])}>
-              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" className="icon svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z" />
-              </svg>
+              <PlusIcon className="icon" />
               New Option
             </button>
             {options.map((value, index) => <input className="input option-input" type="text" placeholder="New option" value={options[index]} onChange={e => updateOptionValue(index, e)} />)}
@@ -65,9 +65,7 @@ const PollCreate = ({
           </div>
         )}
         <button id="submit" className="btn" type="button" onClick={() => submitPoll()}>
-          <svg className="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 15 15" width="15" height="15">
-            <path fill="currentColor" d="M14.66 7.33a.5.5 0 00-.27-.44L1.36.2a.5.5 0 00-.7.57L2.1 6.3l5.72 1.04L2.1 8.38.65 13.9a.5.5 0 00.71.57l13.03-6.7a.5.5 0 00.27-.44z" />
-          </svg>
+          <SubmitIcon />
           Submit
         </button>
       </div>
