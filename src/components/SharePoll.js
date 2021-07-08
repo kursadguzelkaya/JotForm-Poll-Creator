@@ -12,7 +12,7 @@ const SharePoll = ({ pollName, id }) => {
         <p className="share">{`Poll Name: ${pollName}`}</p>
         <p className="share">{`Poll Link: http://localhost:3000/poll/${id}`}</p>
         <CopyToClipboard
-          text={`Poll Link: http://localhost:3000/poll/${id}`}
+          text={`http://localhost:3000/poll/${id}`}
           onCopy={() => setCopied(true)}
         >
           <button id="copy-btn" type="button" className="btn">
