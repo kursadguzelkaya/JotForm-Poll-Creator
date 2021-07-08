@@ -7,6 +7,7 @@ import '../styles/MyPolls.css';
 import PollInfo from './PollInfo';
 import DetailsModal from './DetailsModal';
 import DeleteWarningModal from './DeleteWarningModal';
+import Loading from './Loading';
 
 const MyPolls = ({ polls, status, deletePollRequest }) => {
   console.log(polls);
@@ -18,7 +19,7 @@ const MyPolls = ({ polls, status, deletePollRequest }) => {
     <div className="my-polls">
       <div className="polls">
         <h1>My Polls</h1>
-        {status === 'loading' ? (<h1>loading...</h1>) : (
+        {status === 'loading' ? (<Loading />) : (
           <div className="poll-infos">
             {polls.map(poll => (
               <PollInfo

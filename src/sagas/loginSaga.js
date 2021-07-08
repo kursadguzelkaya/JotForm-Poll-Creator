@@ -30,7 +30,7 @@ function* logInRequest({ payload: history }) {
 
 function* initAuth({ payload: history }) {
   try {
-    yield delay(2000);
+    yield delay(200);
     const key = window.JF.getAPIKey();
     history.push('/myPolls');
     yield put({ type: LOG_IN_SUCCESS, payload: key });
