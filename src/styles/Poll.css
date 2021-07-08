@@ -94,13 +94,16 @@
   .poll-comp {
     padding-left: 0;
   }
-  .poll {
-    width: 100%;
+
+  .poll-comp .poll {
+    width: 90%;
+    padding: 10px;
   }
 
   .poll-comp .poll-questions {
-    padding-left: 0px;
-    margin-left: 0px;
+    width: 90%;
+    padding: 0px;
+    margin: 0px;
   }
 
   .poll-comp .question{

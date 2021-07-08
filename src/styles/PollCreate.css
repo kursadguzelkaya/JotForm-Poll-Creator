@@ -76,3 +76,54 @@
   background-color: var(--green);
 }
 
+@media(max-width: 800px) {
+  .poll-create .poll {
+    width: 90%;
+  }
+  #poll-name {
+    margin-left: 20px;
+  }
+
+
+  .poll-create .poll-questions {
+    width: 100% !important;
+    padding: 0;
+  }
+
+  .poll-create .poll-questions .question {
+    margin-left: 0px;
+  }
+
+  .poll-create {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+@media(max-width: 400px) {
+  #poll-name {
+    margin-left: 0px;
+  }
+  .poll-create .poll {
+    padding: 10px;
+  }
+
+  .poll-create .poll-questions .question {
+    padding: 0px;
+  }
+
+  .poll-create .poll-questions .question input{
+    margin-left: 0px;
+  }
+
+  .poll-create .poll-questions .question button{
+    margin-left: 0px;
+  }
+
+  .poll-create {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}

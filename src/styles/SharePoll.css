@@ -71,6 +71,11 @@
 }
 
 @media(max-width: 600px) {
+  .share-poll {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
   .share-poll .btn .icon{
     margin: auto;
   }
@@ -80,8 +85,8 @@
   }
 
   .share-poll .share-container {
-    width: 100%;
-    margin-top: 30px;
+    width: 90%;
+    margin: 30px auto 0px auto;
     padding-left: 0px;
   } 
 
