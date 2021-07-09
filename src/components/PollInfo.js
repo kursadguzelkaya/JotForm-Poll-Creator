@@ -8,6 +8,7 @@ import '../styles/PollInfo.css';
 import { ReactComponent as ShareIcon } from '../assets/icons/forward.svg';
 import { ReactComponent as DetailsIcon } from '../assets/icons/information.svg';
 import { ReactComponent as TrashIcon } from '../assets/icons/trash.svg';
+import { ReactComponent as UserIcon } from '../assets/icons/participants.svg';
 
 const PollInfo = ({
   id,
@@ -26,7 +27,7 @@ const PollInfo = ({
       <p className="date none-mobile">{`created at: ${date}`}</p>
       <div className="attandence none-mobile-450">
         <p>{votes}</p>
-        <i className="fas fa-user icon" />
+        <UserIcon className="icon" />
       </div>
       <div className="btn-container">
         <Link to={`/share/${id}`}>
