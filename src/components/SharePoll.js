@@ -3,7 +3,7 @@ import { string } from 'prop-types';
 
 import '../styles/SharePoll.css';
 import { ReactComponent as CopyIcon } from '../assets/icons/duplicate.svg';
-import { ReactComponent as ShareWPIcon } from '../assets/icons/phone.svg';
+// import { ReactComponent as ShareWPIcon } from '../assets/icons/phone.svg';
 
 const SharePoll = ({ pollName, id }) => {
   const [copied, setCopied] = useState(false);
@@ -16,10 +16,10 @@ const SharePoll = ({ pollName, id }) => {
           <CopyIcon className="icon" />
           <span className="none-mobile-600">Copy Link</span>
         </button>
-        <button id="whatsapp-btn" type="button" className="btn">
+        {/* <button id="whatsapp-btn" type="button" className="btn">
           <ShareWPIcon className="icon" />
           <span className="none-mobile-600">Share on Whatsapp</span>
-        </button>
+        </button> */}
         {copied ? (
           <div className="copied-success">
             <p>Copied successfully</p>
