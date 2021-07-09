@@ -75,7 +75,7 @@
 
 #submit {
   background-color: var(--green);
-  margin: 20px;
+  margin: 20px auto;
 }
 
 #submit .icon{

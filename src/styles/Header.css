@@ -39,6 +39,9 @@
 
 .logout {
   flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
 }
 
 @media(max-width: 1000px) {
