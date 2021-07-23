@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "0.19.2",
     "customize-cra": "^1.0.0",
+    "eslint-config-airbnb": "^18.2.1",
     "immutable": "4.0.0-rc.12",
     "preact": "^10.5.14",
     "preact-compat": "3.19.0",
@@ -29,7 +30,6 @@
     "@testing-library/react": "9.3.2",
     "@testing-library/user-event": "7.1.2",
     "auto-changelog": "2.3.0",
-    "eslint-config-airbnb": "18.2.0",
     "eslint-plugin-jsx-a11y": "6.3.1",
     "husky": "6.0.0",
     "lint-staged": "10.2.11",
