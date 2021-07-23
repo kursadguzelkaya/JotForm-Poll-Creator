@@ -58,3 +58,5 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const INIT_SOCKET = 'INIT_SOCKET';
 
 export const UPDATE_RESULT_SOCKET = 'UPDATE_RESULT_SOCKET';
+
+export const GET_MY_POLLS = 'GET_MY_POLLS';

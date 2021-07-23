@@ -3,6 +3,7 @@ import {
   call,
   put,
   all,
+  select,
 } from 'redux-saga/effects';
 import I from 'immutable';
 
@@ -10,7 +11,7 @@ import {
   DELETE_POLL_FAIL,
   DELETE_POLL_REQUEST,
   DELETE_POLL_SUCCESS,
-  LOG_IN_SUCCESS,
+  GET_MY_POLLS,
   TAKE_USER_POLLS_FAIL,
   TAKE_USER_POLLS_REQUEST,
   TAKE_USER_POLLS_SUCCESS,
@@ -21,11 +22,12 @@ import {
   getQuestionsOfForm,
   getUserForms,
 } from '../lib/api/unsplashService';
+import { getAPIKey } from '../selectors';
 
-function* takeUserPolls(action) {
+function* takeUserPolls() {
   try {
     // Get API Key
-    const API_KEY = action.payload;
+    const API_KEY = yield select(getAPIKey);
 
     // Get user's forms
     const { status, data: { content } } = yield call(getUserForms, API_KEY);
@@ -123,7 +125,7 @@ function* deletePollReq({ payload }) {
 }
 
 const myPollsSagas = [
-  takeEvery(LOG_IN_SUCCESS, pollRequest),
+  takeEvery(GET_MY_POLLS, pollRequest),
   takeEvery(TAKE_USER_POLLS_REQUEST, takeUserPolls),
   takeEvery(DELETE_POLL_REQUEST, deletePollReq),
 ];
