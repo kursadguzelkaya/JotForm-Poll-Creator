@@ -11,8 +11,8 @@ const SharePoll = ({ pollName, id }) => {
     <div className="share-poll">
       <div className="share-container">
         <p className="share">{`Poll Name: ${pollName}`}</p>
-        <p className="share">{`Poll Link: http://localhost:3000/poll/${id}`}</p>
-        <button id="copy-btn" type="button" className="btn" onClick={() => { navigator.clipboard.writeText(`http://localhost:3000/poll/${id}`); setCopied(true); }}>
+        <p className="share">{`Poll Link: https://jotform-polls.herokuapp.com/poll/${id}`}</p>
+        <button id="copy-btn" type="button" className="btn" onClick={() => { navigator.clipboard.writeText(`https://jotform-polls.herokuapp.com/poll/${id}`); setCopied(true); }}>
           <CopyIcon className="icon" />
           <span className="none-mobile-600">Copy Link</span>
         </button>
