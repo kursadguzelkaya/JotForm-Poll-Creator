@@ -25,8 +25,9 @@ import {
   getFormSubmissions,
   getQuestionsOfForm,
 } from '../lib/api/unsplashService';
-import { API_KEY } from '../constants/adminKey';
 import { getSocket } from '../selectors';
+
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function* updateResultSocket({ payload: { selected, id } }) {
   // Get socket from store
